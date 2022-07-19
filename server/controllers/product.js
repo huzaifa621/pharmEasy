@@ -16,8 +16,9 @@ const productGet = async (req, res) => {
 
 const productPost = async (req, res) => {
   const { data } = req.body;
-  const insertMany = new productModel.insertMany([...data]);
-  await insertMany.save();
+
+  const insertMany = await productModel.insertMany(data);
+
   return res.send("Data added");
 };
 
