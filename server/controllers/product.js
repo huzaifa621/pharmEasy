@@ -1,6 +1,6 @@
 const productModel = require("../models/product");
 
-const productController = async (req, res) => {
+const productGet = async (req, res) => {
   const q = req.query.q;
   try {
     if (q) {
@@ -14,4 +14,11 @@ const productController = async (req, res) => {
   }
 };
 
-module.exports = { productController };
+const productPost = async (req, res) => {
+  const { data } = req.body;
+  const insertMany = new productModel.insertMany([...data]);
+  await insertMany.save();
+  return res.send("Data added");
+};
+
+module.exports = { productGet, productPost };
