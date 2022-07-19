@@ -1,12 +1,14 @@
-import Mainroutes from "./Routes/Mainroutes";
+
+import Healthcare from "./Healthcare Page/Healthcare";
+import { SliderData } from "./Healthcare Page/SliderData";
+
 
 
 function App() {
   return (
     <div >
-     <Mainroutes/>
-      
-    </div>
+       <Healthcare slides={SliderData}/>
+      </div>
   );
 }
 
