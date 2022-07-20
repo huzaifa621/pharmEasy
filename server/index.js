@@ -4,6 +4,7 @@ const cors = require("cors");
 const connection = require("./config/db");
 const userRouter = require("./routes/user.routes");
 const productRouter = require("./routes/product.routes");
+const cartRouter = require("./routes/cart.routes");
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -16,6 +17,7 @@ app.use(
 
 app.use("/api/user", userRouter);
 app.use("/api/product", productRouter);
+app.use("/api/cart", cartRouter);
 
 app.get("/", (req, res) => {
   return res.send("Hello world!");

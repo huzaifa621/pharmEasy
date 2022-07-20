@@ -38,4 +38,15 @@ const productGetSearch = async (req, res) => {
   }
 };
 
-module.exports = { productGet, productPost, productGetSearch };
+const singleProduct = async (req, res) => {
+  const { id } = req.params;
+
+  const data = await productModel.findOne({ _id: id });
+  if (data) {
+    return res.send(data);
+  }
+
+  return res.sendStatus(404);
+};
+
+module.exports = { productGet, productPost, productGetSearch, singleProduct };

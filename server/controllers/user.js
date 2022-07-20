@@ -18,8 +18,8 @@ const userMail = async (req, res) => {
     await newUser.save();
 
     const content = `<div>
-                                  <h1>hello</h1>
-                                  <p>thank you for signing up, here is your {{otp}}</p>
+                            <h1>hello</h1>
+                            <p>thank you for signing up, here is your {{otp}}</p>
                               </div>`;
 
     const template = hbs.compile(content);
