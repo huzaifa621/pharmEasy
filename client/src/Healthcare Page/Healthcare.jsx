@@ -5,6 +5,7 @@ import "./Healthcare.css";
 import { useState } from 'react'
 import { SliderData } from './SliderData'
 import {AiFillLeftCircle ,AiFillRightCircle} from "react-icons/ai";
+import { Box, Grid } from '@chakra-ui/react'
 
 const Healthcare = ({slides}) => {
     const [current,setCurrent]=useState(0);
@@ -19,7 +20,7 @@ const Healthcare = ({slides}) => {
     
   return (
     <>
-       <div className='heading'>Home : Healthcare</div>
+       <div className='heading'>Home &gt; <span style={{color:"gray"}}>Healthcare</span></div>
        <div className='slider'>
         
         <AiFillLeftCircle className='left-arrow' onClick={prevSlide}/>
@@ -30,7 +31,26 @@ const Healthcare = ({slides}) => {
               )
         })}
     </div>
-    <p>kay ata</p>
+  <Box w="80%" m="auto">
+  <Grid templateColumns='repeat(3, 1fr)' gap={6}>
+  <Box w='100%' h='20' bg='white' border="1px" borderRadius="11" boxShadow="md" _hover={{borderColor:"green" , borderWidth:"3px"}} > Hello</Box>
+  <Box w='100%' h='20' bg='white' border="1px" borderRadius="11" boxShadow="md" _hover={{borderColor:"green" , borderWidth:"3px"}} > Hello</Box>
+  <Box w='100%' h='20' bg='white' border="1px" borderRadius="11" boxShadow="md" _hover={{borderColor:"green" , borderWidth:"3px"}} > Hello</Box>
+  <Box w='100%' h='20' bg='white' border="1px" borderRadius="11" boxShadow="md" _hover={{borderColor:"green" , borderWidth:"3px"}} > Hello</Box>
+  <Box w='100%' h='20' bg='white' border="1px" borderRadius="11" boxShadow="md" _hover={{borderColor:"green" , borderWidth:"3px"}} > Hello</Box>
+  <Box w='100%' h='20' bg='white' border="1px" borderRadius="11" boxShadow="md" _hover={{borderColor:"green" , borderWidth:"3px"}} > Hello</Box>
+  <Box w='100%' h='20' bg='white' border="1px" borderRadius="11" boxShadow="md" _hover={{borderColor:"green" , borderWidth:"3px"}} > Hello</Box>
+  <Box w='100%' h='20' bg='white' border="1px" borderRadius="11" boxShadow="md" _hover={{borderColor:"green" , borderWidth:"3px"}} > Hello</Box>
+  <Box w='100%' h='20' bg='white' border="1px" borderRadius="11" boxShadow="md" _hover={{borderColor:"green" , borderWidth:"3px"}} > Hello</Box>
+  <Box w='100%' h='20' bg='white' border="1px" borderRadius="11" boxShadow="md" _hover={{borderColor:"green" , borderWidth:"3px"}} > Hello</Box>
+  <Box w='100%' h='20' bg='white' border="1px" borderRadius="11" boxShadow="md" _hover={{borderColor:"green" , borderWidth:"3px"}} > Hello</Box>
+  <Box w='100%' h='20' bg='white' border="1px" borderRadius="11" boxShadow="md" _hover={{borderColor:"green" , borderWidth:"3px"}} > Hello</Box>
+  <Box w='100%' h='20' bg='white' border="1px" borderRadius="11" boxShadow="md" _hover={{borderColor:"green" , borderWidth:"3px"}} > Hello</Box>
+  <Box w='100%' h='20' bg='white' border="1px" borderRadius="11" boxShadow="md" _hover={{borderColor:"green" , borderWidth:"3px"}} > Hello</Box>
+  <Box w='100%' h='20' bg='white' border="1px" borderRadius="11" boxShadow="md" _hover={{borderColor:"green" , borderWidth:"3px"}} > Hello</Box>
+</Grid>
+</Box>
+  
     </>
     
   )
