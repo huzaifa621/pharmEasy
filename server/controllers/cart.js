@@ -1,5 +1,7 @@
 const cartObjectModel = require("../models/cartObject");
 const cartModel = require("../models/cart");
+const productModel = require("../models/product");
+const orderModel = require("../models/order");
 
 const addCart = async (req, res) => {
   const { productId, qty, user_id } = req.body;
@@ -53,4 +55,50 @@ const addCart = async (req, res) => {
   }
 };
 
-module.exports = { addCart };
+const getCart = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const data = await cartModel.findOne({ user_id: id }).populate({
+      path: "cartProduct",
+      model: cartObjectModel,
+      populate: {
+        path: "product",
+        model: productModel,
+      },
+    });
+
+    if (data) {
+      return res.send(data);
+    }
+    return res.sendStatus(404);
+  } catch (err) {
+    return res.sendStatus(404);
+  }
+};
+
+const moveToOrder = async (req, res) => {
+  const { id } = req.params;
+  const data = await cartModel.findOne({ user_id: id });
+  try {
+    const oldOrder = await orderModel.findOne({ user_id: id });
+    if (oldOrder) {
+      const updateOldOrder = await orderModel.updateOne(
+        { user_id: id },
+        { $push: { orderedProduct: { $each: [...data.cartProduct] } } }
+      );
+      const deleteOneCart = await cartModel.deleteOne({ user_id: id });
+      return res.send("data moved to ordered collection");
+    }
+    const newOrder = new orderModel({
+      user_id: id,
+      orderedProduct: data.cartProduct,
+    });
+    await newOrder.save();
+    const deleteOneCart = await cartModel.deleteOne({ user_id: id });
+    return res.send(" data moved to new ordered collection");
+  } catch (err) {
+    return res.sendStatus(404);
+  }
+};
+
+module.exports = { addCart, getCart, moveToOrder };
