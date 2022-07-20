@@ -11,6 +11,6 @@ const productRouter = Router();
 productRouter.get("/", productGet);
 productRouter.get("/search", productGetSearch);
 productRouter.post("/", productPost);
-productRouter.get("/single/:id", singleProduct);
+productRouter.get("/single/:title", singleProduct);
 
 module.exports = productRouter;
