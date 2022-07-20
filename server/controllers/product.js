@@ -22,4 +22,20 @@ const productPost = async (req, res) => {
   return res.send("Data added");
 };
 
-module.exports = { productGet, productPost };
+const productGetSearch = async (req, res) => {
+  const { q } = req.query;
+  try {
+    if (q) {
+      // let reg = new RegExp(`\\b${q}\\b`, "gi");
+      const data = await productModel.find({
+        title: { $regex: new RegExp(`${q}`), $options: "gi" },
+      });
+      return res.send(data);
+    }
+    return res.send("Data not found");
+  } catch (err) {
+    return res.sendStatus(404);
+  }
+};
+
+module.exports = { productGet, productPost, productGetSearch };
