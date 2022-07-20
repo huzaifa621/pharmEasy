@@ -1,0 +1,65 @@
+
+.maindiv{
+    color: rgb(79,88,94);
+    width: 75%;
+    /* border: 1px solid black; */
+    margin: auto;
+}
+.top_1{
+
+}
+.order_div{
+
+}
+
+.left_div{
+
+}
+
+.right_div{
+
+}
+.slider_1{
+
+}
+.slider_2{
+
+}
+.slider_3{
+
+}
+.desc{
+
+}
+.faq{
+
+}
+.bottom_1{
+
+}
+.bottom_2{
+
+}
+.left_div2{
+    /* border: 1px solid black; */
+    /* color:white; */
+    background-color: rgb(63,132,126);
+    border-radius: 0.5rem;
+    height: 31vh;
+    width: 98vh;
+    box-sizing: border-box;
+    padding: 1.5rem;
+}
+.flex_1{
+    display: flex;
+    gap:50px;
+    font-size: 0.8rem;
+}
+.select{
+    width: 55vh;
+    color: black;
+}
+.left_div2>div{
+    color: white;
+
+}
