@@ -44,16 +44,14 @@
 
 }
 .imgicon{
-    width: 4vh;
+    width: 5.5vh;
     height: 5vh;
     margin: 0.6rem;
    
 }
 
-.slider_1{
-
-}
 .slider_2{
+    margin-top: 2rem;
 
 }
 .slider_3{
@@ -63,6 +61,7 @@
 
 }
 .faq{
+    margin-top: 3rem;
 
 }
 .bottom_1{
@@ -86,13 +85,13 @@
 .bottom_22>div{
     display: flex;
     gap:20px
-
 }
 .bottom_22>p{
     font-size: 25px;
     margin-bottom: 2rem;
+    margin-left: 0.5rem;
 }
-.bottom_22>div>div>img{
+.bottom_22>div>div>a>img{
    width: 25vh;
 
 }
@@ -138,9 +137,7 @@ h4{
   }
 
 .slider_1_div{
-    /* border: 1px solid rgb(238, 233, 233);
-    border-radius: 5px; */
-    padding: 1rem;
+    padding: 0.5rem;
 }
 .slider_img{
     width: 10vh;
@@ -161,4 +158,9 @@ h4{
 }
 .bottom_1_img1{
     width: 8vh;
+}
+.slider_2_div>img{
+    padding: 0.5rem;
+    width: 165vh;
+    height: 40vh;
 }
