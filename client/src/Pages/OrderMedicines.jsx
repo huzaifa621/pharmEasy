@@ -11,6 +11,7 @@ import { Box } from '@chakra-ui/react'
 import {Accordion,AccordionItem, AccordionButton,AccordionPanel,AccordionIcon,} from '@chakra-ui/react'
 import Select from 'react-select'
 import { useState } from 'react'
+import axios from "axios"
 
 
 
@@ -52,17 +53,21 @@ function SamplePrevArrow(props) {
 
 const OrderMedicines = () => {
   const[val,setVal] = useState("")
+  const navigate = useNavigate()
 
-  console.log(val.value,"val")
+  // console.log(val.value,"val")
   var details = val.value
  
   if(val.value)
   {
+    // axios.get(`http://localhost:8080/api/product/single/${details}`).then(({data})=>{
+    //   console.log(data)
+    // })
    localStorage.setItem("productDetails",details)
    navigate("/productdetails")
   }
 
-  const navigate = useNavigate()
+  
 
   var settings = {
     dots: false,
