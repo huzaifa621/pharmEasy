@@ -1,11 +1,11 @@
 
 
 export const SliderData= [
-    {
-        image:'https://cms-contents.pharmeasy.in/banner/769d35ac08e-BachatDay-CB-19July-min.jpg?dim=700x0&dpr=1&q=100'
+    { 
+        image:'https://cms-contents.pharmeasy.in/banner/c1642e659f5-BeautyLauch-SB-June22.jpg'
     },
     {
-        image:'https://cms-contents.pharmeasy.in/banner/c1642e659f5-BeautyLauch-SB-June22.jpg'
+        image:'https://cms-contents.pharmeasy.in/banner/769d35ac08e-BachatDay-CB-19July-min.jpg?dim=700x0&dpr=1&q=100'
     },
     {
         image:'https://cms-contents.pharmeasy.in/banner/3bdb0db12e1-ABZORB-JUL.jpg'
