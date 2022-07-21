@@ -166,7 +166,7 @@ export const LabTest = () => {
         <Box className="certifiedpartner">
           <p className="textcerti">Certified Partner Labs</p>
           <Box className="partnerlabsdiv">
-            <Link to={""} className="covidrtpcr">
+            <Link to={"/labdetails"} className="covidrtpcr">
               <img
                 src="https://s3.ap-south-1.amazonaws.com/pe-neon-public/diagnostics/production/CompanyLogo/c1e61675f13e3744a29aca8e1a481c4c.png"
                 alt="full body checkup"

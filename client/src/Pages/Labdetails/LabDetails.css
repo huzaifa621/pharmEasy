@@ -1,0 +1,56 @@
+.lab_details_box{
+    border: 1px solid red;
+    height: 60rem;
+    width: 65rem;
+    margin: auto;
+    margin-top: 8rem;
+}
+
+.textname{
+    /* border: 1px solid red; */
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #4f585e;
+}
+
+.all_detail_div{
+    /* border: 1px solid red; */
+    height: 22rem;
+    width: 65rem;
+    display: flex;
+    /* margin: auto; */
+    /* gap: 10px; */
+}
+
+.box1{
+    /* border: 1px solid red; */
+    height: 20rem;
+    width: 33rem;
+    margin: auto;
+}
+
+.covidrtpcr_box{
+    border: 1px solid #4f585e;
+    height: 6rem;
+    width: 33rem;
+    border-radius: 5px;
+    display: flex;
+    cursor: pointer;
+}
+.covidrtpcr_box img{
+    height: 2.5rem;
+    margin-left: 2rem;
+    margin-top: 2rem;
+}
+.rtpcr_text{
+    margin-top: 2.2rem;
+    font-size: 1rem;
+    margin-left: 1rem;
+    font-weight: 700;
+    color: #4f585e;
+}
+
+.discription{
+ font-weight: 700;
+    
+}
