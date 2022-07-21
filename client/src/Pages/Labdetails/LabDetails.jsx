@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import "./LabDetails.css";
+import Services from "../CustomerService/Services";
 
 const LabDetails = () => {
   return (
@@ -83,6 +84,7 @@ const LabDetails = () => {
           </Box>
         </Box>
       </Box>
+      <Services/>
     </Box>
   );
 };

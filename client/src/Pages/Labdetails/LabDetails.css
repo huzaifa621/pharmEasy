@@ -1,6 +1,6 @@
 .lab_details_box {
-  border: 1px solid red;
-  height: 60rem;
+  /* border: 1px solid red; */
+  height: 37rem;
   width: 65rem;
   margin: auto;
   margin-top: 8rem;
@@ -28,12 +28,14 @@
 }
 
 .covidrtpcr_box {
+    
   border: 1px solid #4f585e;
   height: 6rem;
   width: 33rem;
   border-radius: 5px;
   display: flex;
   cursor: pointer;
+  /* border: 1px solid red; */
 }
 .covidrtpcr_box img {
   height: 2.5rem;
@@ -83,7 +85,7 @@
 }
 
 .select_test_div {
-  /* border: 1px solid red; */
+  border: 1px solid teal;
   margin-top: 1rem;
   height: 6rem;
   border-radius: 5px;
@@ -93,7 +95,7 @@
 .select_test_div img {
   height: 2rem;
   margin-top: 1rem;
-  margin-left: 1rem;
+  margin-left: 0.6rem;
 }
 
 .select_test_div h3 {
@@ -115,7 +117,7 @@
   width: 8rem;
   margin-left: 0.8rem;
   border-radius: 5px;
-  margin-top: 0.5rem;
+  margin-top: 1.5rem;
   color: white;
   font-weight: 600;
 }
