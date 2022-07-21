@@ -1,5 +1,5 @@
 .sliderbox{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     width: 75%;
     margin: auto;
     margin-top: 4rem;
@@ -9,18 +9,14 @@
     background-color: teal;
 }
 
+
 .main_div{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     height: 2000;
     width: 75%;
     margin: auto;
     
 }
-/* img{
-    background-size: cover ;
-    background: repeat no-repeat;
-    display: block;
-} */
 
 .all_things{
 display: flex;
@@ -202,7 +198,6 @@ cursor: pointer;
 
 .lab_test_online_div{
     /* border:  1px solid red; */
-    height: 100rem;
     margin-top: 2.5rem;
     color: #4f585e;
     font-family: Open Sans,sans-serif!important;
@@ -245,9 +240,9 @@ cursor: pointer;
     width: 100rem;
 }
 
-.thirdparadiv{
-    /* border: 1px solid red; */
-}
+/* .thirdparadiv{
+    border: 1px solid red;
+} */
 
 .thirdparadiv h2{
     /* border:  1px solid red; */
@@ -266,7 +261,7 @@ cursor: pointer;
     color: #232628;
 }
 .diagnosticonline{
-    border:  1px solid red;
+    /* border:  1px solid red; */
     font-size: 1rem;
     font-weight: 545;
     color: #232628;
@@ -276,3 +271,48 @@ cursor: pointer;
     margin-top: 1rem;
 }
 
+.pointsdiv1 {
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+
+.visit {
+    color: rgb(38, 145, 145);
+      margin-top: 1rem;
+  }
+
+  .fifthparadiv {
+    margin-top: 1rem;
+    color: #5d666c;
+    font-family: Open Sans, sans-serif !important;
+  }
+
+  .whychoosepharmEasy {
+    margin-top: 1rem;
+    color: #5d666c;
+  }
+
+  .sixthpartdiv {
+    margin-top: 1rem;
+  }
+
+  .somepoint {
+    margin-left: 1rem;
+  }
+
+  .lastdiv {
+    margin-top: 1rem;
+  }
+
+  .faqdiv {
+    /* border: 1px solid red; */
+    margin-top: 2rem;
+    font-family: Open Sans, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #5d666c;
+  }
+
+  .acco2 {
+    margin-top: 1rem;
+  }

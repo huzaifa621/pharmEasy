@@ -307,8 +307,8 @@ export const LabTest = () => {
 
         <Box className="faqdiv">Frequently Asked Questions</Box>
 
-        <Accordion defaultIndex={[0]} allowMultiple>
-          <AccordionItem>
+        <Accordion style={{margin:"1rem"}} defaultIndex={[0]} allowMultiple>
+          <AccordionItem className="acco2">
             <h2>
               <AccordionButton>
                 <Box flex="1" textAlign="left">
@@ -318,7 +318,7 @@ export const LabTest = () => {
                 <AccordionIcon />
               </AccordionButton>
             </h2>
-            <AccordionPanel pb={4}>
+            <AccordionPanel color={"#8897a2"} pb={4}>
               PharmEasy takes safety of our patients and staff very seriously.
               Which is why since the onset of COVID-19, we formulated a 5-step
               safety program to offer 100% protection to all stakeholders..
@@ -331,7 +331,7 @@ export const LabTest = () => {
             </AccordionPanel>
           </AccordionItem>
 
-          <AccordionItem>
+          <AccordionItem className="acco2">
           <h2>
             <AccordionButton className="btn">
               <Box flex="1" textAlign="left">
@@ -340,7 +340,7 @@ export const LabTest = () => {
               <AccordionIcon />
             </AccordionButton>
           </h2>
-          <AccordionPanel pb={1}>
+          <AccordionPanel color={"#8897a2"} pb={1}>
             PharmEasy owns 18 state-of-the-art diagnostic laboratories in the
             country with an inhouse fleet of 500 phlebotomists across 2500+
             pincodes. We have a dedicated training team for the technicians
@@ -352,7 +352,7 @@ export const LabTest = () => {
           </AccordionPanel>
         </AccordionItem>
 
-        <AccordionItem>
+        <AccordionItem className="acco2">
           <h2>
             <AccordionButton className="btn">
               <Box flex="1" textAlign="left">
@@ -361,7 +361,7 @@ export const LabTest = () => {
               <AccordionIcon />
             </AccordionButton>
           </h2>
-          <AccordionPanel pb={1}>
+          <AccordionPanel color={"#8897a2"} pb={1}>
             Utmost care is taken to collect samples while maintaining complete
             hygiene. Only new and fresh collection kits and needles are used.
             After collection, the sample is immediately transferred into an
@@ -372,7 +372,7 @@ export const LabTest = () => {
           </AccordionPanel>
         </AccordionItem>
 
-        <AccordionItem>
+        <AccordionItem className="acco2">
           <h2>
             <AccordionButton className="btn">
               <Box flex="1" textAlign="left">
@@ -381,7 +381,7 @@ export const LabTest = () => {
               <AccordionIcon />
             </AccordionButton>
           </h2>
-          <AccordionPanel pb={1}>
+          <AccordionPanel color={"#8897a2"} pb={1}>
             Lab tests or diagnostic tests are recommended by doctors when they
             suspect that there might be something wrong with your health.
             Samples of your blood, stool, urine, or mucus can reveal a lot about
@@ -390,7 +390,8 @@ export const LabTest = () => {
             medication or suggest a course of treatment.
           </AccordionPanel>
         </AccordionItem>
-        <AccordionItem>
+
+        <AccordionItem className="acco2">
           <h2>
             <AccordionButton className="btn">
               <Box flex="1" textAlign="left">
@@ -399,13 +400,13 @@ export const LabTest = () => {
               <AccordionIcon />
             </AccordionButton>
           </h2>
-          <AccordionPanel pb={1}>
+          <AccordionPanel color={"#8897a2"} pb={1}>
             It takes 24-48 hours for the lab to prepare your report and have it
             delivered to you.
           </AccordionPanel>
         </AccordionItem>
 
-        <AccordionItem>
+        <AccordionItem className="acco2">
           <h2>
             <AccordionButton className="btn">
               <Box flex="1" textAlign="left">
@@ -414,7 +415,7 @@ export const LabTest = () => {
               <AccordionIcon />
             </AccordionButton>
           </h2>
-          <AccordionPanel pb={1}>
+          <AccordionPanel color={"#8897a2"} pb={1}>
             Different tests have different requirements. Some may need to be on
             an empty stomach whereas, for some other tests, you may need to
             consume food before the sample is collected. Speak with your doctor
@@ -423,7 +424,7 @@ export const LabTest = () => {
           </AccordionPanel>
         </AccordionItem>
 
-        <AccordionItem>
+        <AccordionItem className="acco2">
           <h2>
             <AccordionButton className="btn">
               <Box flex="1" textAlign="left">
@@ -432,7 +433,7 @@ export const LabTest = () => {
               <AccordionIcon />
             </AccordionButton>
           </h2>
-          <AccordionPanel pb={1}>
+          <AccordionPanel color={"#8897a2"} pb={1}>
             The reports that our labs will deliver to you will be quite
             detailed. There will be charts of reference ranges to help you
             understand the report and a statement from a qualified doctor. But,
@@ -441,7 +442,7 @@ export const LabTest = () => {
           </AccordionPanel>
         </AccordionItem>
 
-        <AccordionItem>
+        <AccordionItem className="acco2">
           <h2>
             <AccordionButton className="btn">
               <Box flex="1" textAlign="left">
@@ -451,7 +452,7 @@ export const LabTest = () => {
               <AccordionIcon />
             </AccordionButton>
           </h2>
-          <AccordionPanel pb={1}>
+          <AccordionPanel color={"#8897a2"} pb={1}>
             If your reports are within normal range, it is certainly good news.
             But normal results do not always give you a clean bill of health. If
             symptoms persist, your doctor will recommend other tests to detect
