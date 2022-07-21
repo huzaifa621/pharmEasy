@@ -1,31 +1,27 @@
-import React from 'react'
-import { useEffect } from 'react'
-import axios from "axios"
+import React from "react";
+import { useEffect } from "react";
+import axios from "axios";
 
 const Desc = () => {
+  const detail = localStorage.getItem("productDetails");
 
-    const detail = localStorage.getItem("productDetails")
+  console.log(detail);
 
-    console.log(detail)
+  useEffect(() => {
+    getData();
+  }, []);
 
-    useEffect(() => {
-
-      getData()
-
-    },[])
-
-    const getData = () =>{
-      // axios.get(`http://localhost:8080/api/product/single/${detail}`).then(({data})=>{
-      //   console.log(data)
-      // })
-    }
-
+  const getData = () => {
+    // axios.get(`http://localhost:8080/api/product/single/${detail}`).then(({data})=>{
+    //   console.log(data)
+    // })
+  };
 
   return (
     <div>
       <h1>description</h1>
     </div>
-  )
-}
+  );
+};
 
-export default Desc
+export default Desc;

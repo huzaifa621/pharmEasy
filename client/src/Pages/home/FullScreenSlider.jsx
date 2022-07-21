@@ -20,7 +20,7 @@ const FullScreenSlider = () => {
     <div>
       <Slider {...settings}>
         <div>
-            <img src={db[0]} alt="" />
+          <img src={db[0]} alt="" />
         </div>
         {/* <div>
             <img src={db[1]} alt="" />

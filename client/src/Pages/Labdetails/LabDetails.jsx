@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import "./LabDetails.css";
-import styles from "../../Styles/OrderMedicine.module.css"
+import styles from "../../Styles/OrderMedicine.module.css";
 import Services from "../CustomerService/Services";
 
 const LabDetails = () => {
@@ -85,30 +85,46 @@ const LabDetails = () => {
           </Box>
         </Box>
       </Box>
-      <Services/>
-      <div className="appdiv" >
-      <div className={styles.bottom_2}>
+      <Services />
+      <div className="appdiv">
+        <div className={styles.bottom_2}>
           <div className={styles.bottom_21}>
-            <img src="https://assets.pharmeasy.in/web-assets/_next/icons/footerMobile.jpg" alt=""/>
+            <img
+              src="https://assets.pharmeasy.in/web-assets/_next/icons/footerMobile.jpg"
+              alt=""
+            />
           </div>
           <div className={styles.bottom_22}>
             <p>Download the App for Free</p>
             <div>
-            <div>
-              <a href="https://play.google.com/store/apps/details?id=com.phonegap.rxpal&hl=en_IN&gl=US&utm_source=web&utm_medium=footer" target="_blank" rel="noreferrer">
-              <img src="https://www.idfcfirstbank.com/content/dam/IDFCFirstBank/apple-store-icon.svg" alt=""/>
-              </a>
-             
-            </div>
-            <div>
-              <a href="https://apps.apple.com/in/app/pharmeasy-healthcare-app/id982432643" target="_blank" rel="noreferrer">
-              <img src="https://www.idfcfirstbank.com/content/dam/IDFCFirstBank/android-store-icon.svg" alt=""/>
-              </a>
-            </div>
+              <div>
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.phonegap.rxpal&hl=en_IN&gl=US&utm_source=web&utm_medium=footer"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src="https://www.idfcfirstbank.com/content/dam/IDFCFirstBank/apple-store-icon.svg"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <div>
+                <a
+                  href="https://apps.apple.com/in/app/pharmeasy-healthcare-app/id982432643"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src="https://www.idfcfirstbank.com/content/dam/IDFCFirstBank/android-store-icon.svg"
+                    alt=""
+                  />
+                </a>
+              </div>
             </div>
           </div>
         </div>
-        </div>
+      </div>
     </Box>
   );
 };
