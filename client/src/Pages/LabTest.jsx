@@ -11,13 +11,19 @@ import {
 } from "@chakra-ui/react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
+import img1 from "./labtest IMG/onTime.jpg"
+import img2 from "./labtest IMG/pre health check up.jpg"
+import img3 from "./labtest IMG/stomach issue.jpg"
+import img4 from "./labtest IMG/senior citizen.jpg"
+import img5 from "./labtest IMG/full body checkup.jpg"
+import img6 from "./labtest IMG/comprehencsve full body checkup.jpg"
 import img7 from "./labtest IMG/monsoon fever packege.jpg";
 import saveper from "./all faci/save 5percent.jpg";
-import "./labtest.css";
+import "./LabTest.css";
 import { Link } from "react-router-dom";
-import Ourpatientsslider from "./happyPatientsSlider/Ourpatientsslider";
+import OurPatientsSlider from "./happyPatientsSlider/OurPatientsSlider";
 import { FacilitySlider } from "./facilityProviderSlider/FacilitySlider";
-import Services from "./CutomerService/Services";
+import Services from "./CustomerService/Services"
 
 export const LabTest = () => {
   const settings = {
@@ -327,7 +333,7 @@ export const LabTest = () => {
           </AccordionItem>
         </Accordion>
       </Box>
-      <Ourpatientsslider />
+      < OurPatientsSlider/>
       <FacilitySlider />
       <Services />
     </>

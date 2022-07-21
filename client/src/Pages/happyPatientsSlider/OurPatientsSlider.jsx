@@ -9,7 +9,7 @@ import img2 from "./pslider/img2nd.jpg";
 import img3 from "./pslider/img3.jpg";
 import img4 from "./pslider/img4.png";
 
-const Ourpatientsslider = () => {
+const OurPatientsSlider = () => {
   const settings = {
     dots: false,
     infinite: true,
@@ -39,4 +39,4 @@ const Ourpatientsslider = () => {
   );
 };
 
-export default Ourpatientsslider;
+export default OurPatientsSlider;
