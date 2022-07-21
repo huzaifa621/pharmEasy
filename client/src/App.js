@@ -1,17 +1,12 @@
 
-
-
 import Healthcare from "./Healthcare Page/Healthcare";
 import Product from "./Healthcare Page/Product";
 import { SliderData } from "./Healthcare Page/SliderData";
 
-// import { LabTest } from "./Pages/LabTest";
-
-
-import Mainroutes from "./Routes/Mainroutes";
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
-
-
+import { Footer } from "./Components/Footer";
+import { AppDownload } from "./Pages/home/AppDownload";
+import {FullScreenSlider} from "./Pages/home/FullScreenSlider";
+import { Navbar } from "./Components/Navbar";
 
 
 function App() {
@@ -21,6 +16,7 @@ function App() {
       <LabTest/> */}
       <Healthcare slides={SliderData}/>
       <Product/>
+
     </div>
   );
 }
