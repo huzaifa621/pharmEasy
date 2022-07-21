@@ -316,3 +316,9 @@ cursor: pointer;
   .acco2 {
     margin-top: 1rem;
   }
+
+  .appdiv{
+    /* border: 1px solid red; */
+    width: 66rem;
+    margin: auto;
+  }

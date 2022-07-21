@@ -12,7 +12,6 @@ const Mainroutes = () => {
       <Routes>
         <Route path="productdetails" element={<Desc/>}/>
         <Route path="med" element = { <OrderMedicines/>}/>
-        {/* <Route path='/labdetails' element={<LabDetails/>}/> */}
       </Routes>
      
     </div>
