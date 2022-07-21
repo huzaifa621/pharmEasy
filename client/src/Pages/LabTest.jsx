@@ -6,41 +6,242 @@ import {
   AccordionPanel,
   AccordionIcon,
   Box,
+  Text,
+  Button,
 } from "@chakra-ui/react";
-import Slider from "react-slick"
-import img1 from "./labtest IMG/onTime.jpg"
-import img2 from "./labtest IMG/pre health check up.jpg"
-import img3 from "./labtest IMG/stomach issue.jpg"
-
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import img1 from "./labtest IMG/onTime.jpg";
+import img2 from "./labtest IMG/pre health check up.jpg";
+import img3 from "./labtest IMG/stomach issue.jpg";
+import img4 from "./labtest IMG/senior citizen.jpg";
+import img5 from "./labtest IMG/full body checkup.jpg";
+import img6 from "./labtest IMG/comprehencsve full body checkup.jpg";
+import img7 from "./labtest IMG/monsoon fever packege.jpg";
+import saveper from "./all faci/save 5percent.jpg";
+import "./labtest.css";
+import { Link } from "react-router-dom";
 
 export const LabTest = () => {
-  
-        const settings = {
-          dots: true,
-          infinite: true,
-          speed: 5000,
-          slidesToShow: 1,
-          slidesToScroll: 1
-        };
-        const Images = [img1, img2, img3];
-      
+  const settings = {
+    className: "center",
+    centerMode: true,
+    infinite: true,
+    centerPadding: "160px",
+    slidesToShow: 1,
+    speed: 500,
+  };
+
+  return (
+    <>
+      <Box className="sliderbox">
+        <Slider {...settings} className="sliderimg">
+          <div>
+            <img
+              src={img1}
+              alt=""
+              style={{
+                height: "18rem",
+                width: "80%",
+                margin: "auto",
+                backgroundSize: "cover",
+              }}
+            />
+          </div>
+          <div>
+            <img
+              src={img2}
+              alt=""
+              style={{ height: "18rem", width: "80%", margin: "auto" }}
+            />
+          </div>
+          <div>
+            <img
+              src={img3}
+              alt=""
+              style={{ height: "18rem", width: "80%", margin: "auto" }}
+            />
+          </div>
+          <div>
+            <img
+              src={img4}
+              alt=""
+              style={{ height: "18rem", width: "80%", margin: "auto" }}
+            />
+          </div>
+          <div>
+            <img
+              src={img5}
+              alt=""
+              style={{ height: "18rem", width: "80%", margin: "auto" }}
+            />
+          </div>
+          <div>
+            <img
+              src={img6}
+              alt=""
+              style={{ height: "18rem", width: "80%", margin: "auto" }}
+            />
+          </div>
+          <div>
+            <img
+              src={img7}
+              alt=""
+              style={{ height: "18rem", width: "90%", margin: "auto" }}
+            />
+          </div>
+        </Slider>
+      </Box>
+
+      <Box className="main_div">
+        <Box className="all_things">
+          <Link to={""} className="allboxes">
+            <img
+              src="https://assets.pharmeasy.in/web-assets/dist/6b3d644c.svg"
+              alt="all test"
+            />
+            <p>All Tests</p>
+          </Link>
+          <Link to={""} className="allboxes">
+            <img
+              src="https://assets.pharmeasy.in/web-assets/dist/dea295a0.svg"
+              alt=""
+            />
+            <p>Health packages</p>
+          </Link>
+          <Link to={""} className="allboxes">
+            <img
+              src="https://assets.pharmeasy.in/web-assets/dist/d4d62fbf.svg"
+              alt="upload Precription"
+            />
+            <p>Upload Precription</p>
+          </Link>
+          <Link to={""} className="allboxes">
+            <img
+              src="https://assets.pharmeasy.in/web-assets/dist/4ed59722.svg"
+              alt="Book on Call"
+            />
+            <p>Book on Call</p>
+          </Link>
+        </Box>
+
+        <Box className="saveperdiv">
+          <img src={saveper} alt="" />
+        </Box>
+
+        {/* Previously Browsed By You */}
+        <Box className="previouslydiv ">
+          <Text className="pre">Previously Browsed By You</Text>
+          <Box className="browseddiv ">
+            <Link to={""} className="body_checkdiv1">
+              <img
+                src="https://assets.pharmeasy.in/web-assets/dist/dea295a0.svg"
+                alt="full body checkup"
+              />
+              <p>Comprehensive Full Body Checkup with Vitamin D & B12</p>
+              <p className="avai">Available at 1 certified lab</p>
+              <p className="test">Includes 87 tests</p>
+              <p className="testprice">₹1,499 onwards</p>
+            </Link>
+
+            <Link to={""} className="body_checkdiv2">
+              <img
+                src="https://assets.pharmeasy.in/web-assets/dist/6b3d644c.svg"
+                alt="full body checkup"
+              />
+              <p>Covid-19 RTPCR (Coronavirus SARS - CoV2)</p>
+              <p className="avai">Available at 1 certified lab</p>
+              <p className="testprice">₹1,499 onwards</p>
+            </Link>
+
+            <Link to={""} className="body_checkdiv2">
+              <img
+                src="https://assets.pharmeasy.in/web-assets/dist/dea295a0.svg"
+                alt="full body checkup"
+              />
+              <p>Arthritis Screening Health Checkup</p>
+              <p className="avai">Available at 1 certified lab</p>
+              <p className="test">Includes 37 tests</p>
+              <p className="testprice">₹999 onwards</p>
+            </Link>
+          </Box>
+        </Box>
+
+        {/* Certified Partner Labs */}
+        <Box className="certifiedpartner">
+          <p className="textcerti">Certified Partner Labs</p>
+          <Box className="partnerlabsdiv">
+            <Link to={""} className="covidrtpcr">
+              <img
+                src="https://s3.ap-south-1.amazonaws.com/pe-neon-public/diagnostics/production/CompanyLogo/c1e61675f13e3744a29aca8e1a481c4c.png"
+                alt="full body checkup"
+              />
+              <p className="rtpcr">PharmEasy Labs (Covid RTPCR)</p>
+              <p className="certified">NABL, CAP Certified</p>
+            </Link>
+
+            <Link to={""} className="covidrtpcr">
+              <img src="https://s3.ap-south-1.amazonaws.com/pe-neon-public/diagnostics/production/CompanyLogo/a0f1970bb7d73fcdbd5f08533a2484f2.png" />
+              <p className="rtpcr">PharmEasy Labs (Thyrocare powered)</p>
+              <p className="certified"> Certified</p>
+            </Link>
+          </Box>
+        </Box>
+
+              <Box className="lab_test_online_div">
+              <h3 className="lab_tests_online">The (Pharm)Easy Way To Book Lab Tests Online</h3>
+              <Box className="Book_Diagnostics">Book Diagnostics Lab Test Online. Get doorstep sample collection</Box>
+
+              <Box className="booking_made_simple">
+                <h2>Lab Test Booking Made Simple</h2>
+                <Box className="span_box">
+                  <span>One of the most popular services PharmEasy offers is diagnostic testing. People need to book pathological tests for many reasons. But before booking, they wonder if the  "
+                  <b>diagnostic centre</b>
+                  " can be trusted to produce accurate results and how long they might have to wait in a queue to get tested.
+                  </span>
+                </Box>
+
+                <Box className="secondparadiv">
+                  <span className="secondspan">To bypass these hassles, PharmEasy has set up an extensive network of reputed "
+                  <b>pathological laboratories</b>
+                  "  in India. One such lab is Thyrocare. With Thyrocare on board, we can give you access to a wide network of diagnostic laboratories.We also offer a "
+                  <b>home collection of samples</b>
+                  " as well. Bid adieu to anxious days of wondering where to book diagnostic tests and embrace the PharmEasy way.
+                  </span>
+                </Box>
+              </Box>
+
+              <Box className="thirdparadiv">
+                <h2>Lab tests at your doorstep</h2>
+                <Box className="doorstep">
+                <span className="thirdspan">
+                To ease your anxieties, PharmEasy offers the facility of doorstep collection. The technician will come to your house to collect samples. And all safety precautions are maintained. A fresh collection kit and/or needle will be used so that there is no contamination of samples of the spread of diseases. We use special ice boxes that meet NABL guidelines to transport your samples. The reports will be sent to you online. That means you won’t have to travel to the diagnostic lab to collect your reports.
+                </span>
+                </Box>
+              </Box>
+
+
+              <Box className="fourthparadiv"></Box>
+                <h2 className="diagnosticonline">How can you book diagnostic tests online?</h2>
+
+                <Box className="fourthspan">
+                  <span>Booking a test on PharmEasy is simple</span>
+                </Box>
+
+                
+
+
+              </Box>
+
+      </Box>
+    </>
+  );
+
   return (
     <div>
-         <div style={{  height:"30%", alignitems: "left", marginBottom: "50px"}}>
-        <Slider {...settings}>
-        {Images.map((e) => {
-            return <img style={{ borderRadius: "10px",height: "50%"}} src={e} alt="" />
-            })}
-        </Slider>
-      </div>
-
-
-
-
-
-
-
-      {/* <Accordion defaultIndex={[0]} allowMultiple>
+      <Box className="main_div">
+        {/* <Accordion defaultIndex={[0]} allowMultiple>
         <AccordionItem>
           <h2>
             <AccordionButton>
@@ -192,6 +393,8 @@ export const LabTest = () => {
           </AccordionPanel>
         </AccordionItem>
       </Accordion> */}
+        //{" "}
+      </Box>
     </div>
-  )
-}
+  );
+};
