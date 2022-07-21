@@ -14,13 +14,13 @@ const Product = () => {
         }
         getData();
     },[])
-    console.log(data);
+    // console.log(data);
   return (
     <div>
     product page
     {
-   data.map((elem,ind)=>(
-    <div key={elem._id}>
+        data.map((elem,ind)=>(
+        <div key={elem._id}>
         <h3>{elem.title}</h3>
         <img src={elem.img1} alt="" />
         <p>{elem.mrp}</p>
