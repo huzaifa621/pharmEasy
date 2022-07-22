@@ -34,7 +34,7 @@ const userMail = async (req, res) => {
 
     transport
       .sendMail({
-        from: "pharmeasy620@gmail.com",
+        from: process.env.EMAIL,
         to: req.body.mail,
         subject: "here is your otp.",
         // text: "hellow world 1234 monodb is good",
