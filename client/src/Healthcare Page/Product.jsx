@@ -3,7 +3,7 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
-import { Box ,Grid, Heading, Image,Tag,TagLabel,Text,Select ,Stack,Checkbox, Divider} from "@chakra-ui/react";
+import { Box ,Grid, Heading, Image,Text,Select ,Stack,Checkbox, Divider} from "@chakra-ui/react";
 
 
 
@@ -27,19 +27,19 @@ const Product = () => {
        data.sort(function(a,b){
         return a.mrp-b.mrp
       })
-        setType([...data])
+        setType([...data,data])
       }
        else if(val=== "price-dsc"){
         data.sort(function(a,b){
           return b.mrp - a.mrp
         })
-        setType([...data])
+        setType([...data,data])
       }
       else if(val==="discount"){
         data.sort(function(a,b){
           return b.discount - a.discount
         })
-        setType([...data]);
+        setType([...data,data]);
       }    
     }
 
@@ -180,12 +180,8 @@ const Product = () => {
             <Image h={'1.3rem'} w='100%' src='https://assets.pharmeasy.in/web-assets/_next/icons/pdp-discount.png'/>
             <Box color={'white'} fontSize={'10.3px'} position={'absolute'} top='35%' left={'35%'} transform='translate(-50%,-50%)' >{elem.discount} % OFF</Box>
             </Box>
-            
-            </Box>
-            {/* <Tag size='sm' colorScheme='red'  width={'6rem'} m='0.2rem auto auto 0.9rem'>
-            <TagLabel  color={'darkwhite'}>{elem.discount} % OFF</TagLabel>
-            </Tag> */}
-            <Heading fontSize='lg'> ₹ {elem.mrp}</Heading>
+           </Box>
+             <Heading fontSize='lg'> ₹ {elem.mrp}</Heading>
             </Box>
             ))
           }
