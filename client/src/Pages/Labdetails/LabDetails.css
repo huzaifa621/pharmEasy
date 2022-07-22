@@ -146,3 +146,9 @@
   color: white;
   font-weight: 700;
 }
+
+.appdiv {
+  /* border: 1px solid red; */
+  width: 66rem;
+  margin: auto;
+}
