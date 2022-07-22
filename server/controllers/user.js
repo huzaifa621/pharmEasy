@@ -1,13 +1,14 @@
 const nodemailer = require("nodemailer");
 const userModel = require("../models/user");
 const hbs = require("handlebars");
+require("dotenv").config();
 const transport = nodemailer.createTransport({
   service: "gmail",
   secure: false,
   port: 465, //465:ssl , 587 :tsl
   auth: {
-    user: "pharmeasy620@gmail.com",
-    pass: "jkoueclzmizdydcc",
+    user: process.env.EMAIL,
+    pass: process.env.PASS,
   },
   host: "smtp.gmail.com",
 });
