@@ -7,6 +7,47 @@ import "slick-carousel/slick/slick-theme.css";
 import img1 from "./facility/img1.png";
 import img2 from "./facility/img2nd.png";
 import img3 from "./facility/img3.png";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+
+function NextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <IoIosArrowForward
+      className={className}
+      style={{
+        ...style,
+        display: "block",
+        color: "black",
+        height: "2rem",
+        marginRight: "1rem",
+        background: "none",
+        width: "2rem",
+        zIndex: 50,
+      }}
+      onClick={onClick}
+    />
+  );
+}
+
+function PrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <IoIosArrowBack
+      className={className}
+      style={{
+        ...style,
+        display: "block",
+        marginLeft: "1rem",
+        background: "none",
+        color: "black",
+        height: "2rem",
+        width: "2rem",
+        zIndex: 50,
+      }}
+      onClick={onClick}
+    />
+  );
+}
 
 export const FacilitySlider = () => {
   var settings = {
@@ -17,6 +58,8 @@ export const FacilitySlider = () => {
     autoplay: true,
     autoplaySpeed: 3000,
     pauseOnHover: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
   };
   const images = [img1, img2, img3];
   return (

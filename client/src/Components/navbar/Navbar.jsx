@@ -37,7 +37,7 @@ import { RiUser5Fill } from "react-icons/ri";
 import { HiShoppingCart } from "react-icons/hi";
 import { FiMail } from "react-icons/fi";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthContext";
 
 const options = [
@@ -118,7 +118,7 @@ const Navbar = () => {
   const [emptyError, setEmptyError] = useState(false);
   const toast = useToast();
   const value = useContext(AuthContext);
-  console.log(value);
+  const navigate = useNavigate();
 
   const sendMail = async (mail) => {
     setLoading(true);
@@ -172,7 +172,11 @@ const Navbar = () => {
 
   return (
     <div className={styles.container}>
-      <div>
+      <div
+        onClick={() => {
+          navigate("/");
+        }}
+      >
         <img
           src="https://assets.pharmeasy.in/web-assets/dist/fca22bc9.png"
           alt=""
@@ -207,16 +211,16 @@ const Navbar = () => {
         <div className={styles.tabContainer}>
           <div>
             <div>
-              <a href="">Order Medicines</a>
+              <Link to="/orderMed">Order Medicines</Link>
             </div>
             <div>
-              <a href="">Healthcare Products</a>
+              <Link to="/healthcare">Healthcare Products</Link>
             </div>
             <div>
-              <a href="">Lab tests</a>
+              <Link to="/labtest">Lab tests</Link>
             </div>
             <div>
-              <a href="">RTPCR</a>
+              <Link to="/rtpcr">RTPCR</Link>
             </div>
           </div>
           <Flex marginRight={"2rem"}>

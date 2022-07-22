@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import styles from "../../Styles/home/labTest.module.css";
 
 const LabTestCards = () => {
+  const navigate = useNavigate();
   return (
-    <div className={styles.box}>
+    <div className={styles.box} onClick={() => navigate("/rtpcr")}>
       <div>
         <img
           width="60px"

@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import styles from "../../Styles/home/offerCards.module.css";
 
 const OfferCards = () => {
+  const navigate = useNavigate();
   return (
     <div className={styles.container}>
       <div>
@@ -9,7 +11,9 @@ const OfferCards = () => {
           <div className={styles.heading}>Order Medicines</div>
         </div>
         <div>
-          <button className={styles.btn}>Order Now</button>
+          <button onClick={() => navigate("/orderMed")} className={styles.btn}>
+            Order Now
+          </button>
         </div>
       </div>
 
@@ -19,7 +23,11 @@ const OfferCards = () => {
           <div className={styles.heading}>Healthcare Products</div>
         </div>
         <div>
-          <button style={{ backgroundColor: "#fc8019" }} className={styles.btn}>
+          <button
+            onClick={() => navigate("/healthcare")}
+            style={{ backgroundColor: "#fc8019" }}
+            className={styles.btn}
+          >
             Order Now
           </button>
         </div>
@@ -31,7 +39,11 @@ const OfferCards = () => {
           <div className={styles.heading}>Lab tests</div>
         </div>
         <div>
-          <button style={{ backgroundColor: "#00b9e1" }} className={styles.btn}>
+          <button
+            onClick={() => navigate("/labtest")}
+            style={{ backgroundColor: "#00b9e1" }}
+            className={styles.btn}
+          >
             Book Now
           </button>
         </div>

@@ -1,6 +1,48 @@
 import styles from "../../Styles/home/justOffer.module.css";
 import Slider from "react-slick";
 import { OfferBox } from "./OfferBox";
+import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+
+function NextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <IoIosArrowForward
+      className={className}
+      style={{
+        ...style,
+        display: "block",
+        color: "black",
+        height: "2rem",
+        marginRight: "1rem",
+        background: "none",
+        width: "2rem",
+        zIndex: 50,
+      }}
+      onClick={onClick}
+    />
+  );
+}
+
+function PrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <IoIosArrowBack
+      className={className}
+      style={{
+        ...style,
+        display: "block",
+        marginLeft: "1rem",
+        background: "none",
+        color: "black",
+        height: "2rem",
+        width: "2rem",
+        zIndex: 50,
+      }}
+      onClick={onClick}
+    />
+  );
+}
 
 const JustOffer = () => {
   var settings = {
@@ -9,7 +51,9 @@ const JustOffer = () => {
     infinite: false,
     slidesToShow: 5,
     slidesToScroll: 1,
-    swipeToSlide: true
+    swipeToSlide: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
   };
   return (
     <div className={styles.container}>

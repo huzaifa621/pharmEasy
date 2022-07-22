@@ -8,6 +8,47 @@ import img1 from "./pslider/imgfirst.jpg";
 import img2 from "./pslider/img2nd.jpg";
 import img3 from "./pslider/img3.jpg";
 import img4 from "./pslider/img4.png";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+
+function NextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <IoIosArrowForward
+      className={className}
+      style={{
+        ...style,
+        display: "block",
+        color: "black",
+        height: "2rem",
+        marginRight: "1rem",
+        background: "none",
+        width: "2rem",
+        zIndex: 50,
+      }}
+      onClick={onClick}
+    />
+  );
+}
+
+function PrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <IoIosArrowBack
+      className={className}
+      style={{
+        ...style,
+        display: "block",
+        marginLeft: "1rem",
+        background: "none",
+        color: "black",
+        height: "2rem",
+        width: "2rem",
+        zIndex: 50,
+      }}
+      onClick={onClick}
+    />
+  );
+}
 
 const OurPatientsSlider = () => {
   const settings = {
@@ -16,6 +57,8 @@ const OurPatientsSlider = () => {
     slidesToShow: 2,
     slidesToScroll: 1,
     pauseOnHover: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
   };
   const Images = [img1, img2, img3, img4];
   return (

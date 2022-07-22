@@ -1,5 +1,45 @@
 import Slider from "react-slick";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
+function NextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <IoIosArrowForward
+      className={className}
+      style={{
+        ...style,
+        display: "block",
+        color: "white",
+        height: "2rem",
+        marginRight: "1rem",
+        background: "none",
+        width: "2rem",
+        zIndex: 50,
+      }}
+      onClick={onClick}
+    />
+  );
+}
+
+function PrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <IoIosArrowBack
+      className={className}
+      style={{
+        ...style,
+        display: "block",
+        marginLeft: "1rem",
+        background: "none",
+        color: "white",
+        height: "2rem",
+        width: "2rem",
+        zIndex: 50,
+      }}
+      onClick={onClick}
+    />
+  );
+}
 const TopSlider = () => {
   var settings = {
     dots: true,
@@ -8,10 +48,17 @@ const TopSlider = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
-    cssEase: "linear"
+    cssEase: "linear",
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
   };
   return (
-    <div style={{ backgroundColor: "whitesmoke", paddingBottom: "30px" }}>
+    <div
+      style={{
+        backgroundColor: "whitesmoke",
+        paddingBottom: "30px",
+      }}
+    >
       <Slider {...settings}>
         <div>
           <img

@@ -24,7 +24,48 @@ import { Link } from "react-router-dom";
 import OurPatientsSlider from "./happyPatientsSlider/OurPatientsSlider";
 import { FacilitySlider } from "./facilityProviderSlider/FacilitySlider";
 import Services from "./CustomerService/Services";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
+function NextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <IoIosArrowForward
+      className={className}
+      style={{
+        ...style,
+        display: "block",
+        color: "black",
+        height: "2rem",
+
+        background: "none",
+        width: "2rem",
+        zIndex: 50,
+      }}
+      onClick={onClick}
+    />
+  );
+}
+
+function PrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <IoIosArrowBack
+      className={className}
+      style={{
+        ...style,
+        display: "block",
+
+        background: "none",
+
+        color: "black",
+        height: "2rem",
+        width: "2rem",
+        zIndex: 50,
+      }}
+      onClick={onClick}
+    />
+  );
+}
 export const LabTest = () => {
   const settings = {
     className: "center",
@@ -33,6 +74,8 @@ export const LabTest = () => {
     centerPadding: "160px",
     slidesToShow: 1,
     speed: 500,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
   };
   return (
     <>
@@ -44,7 +87,7 @@ export const LabTest = () => {
               alt=""
               style={{
                 height: "18rem",
-                width: "80%",
+                width: "90%",
                 margin: "auto",
                 backgroundSize: "cover",
               }}
@@ -54,35 +97,35 @@ export const LabTest = () => {
             <img
               src={img2}
               alt=""
-              style={{ height: "18rem", width: "80%", margin: "auto" }}
+              style={{ height: "18rem", width: "90%", margin: "auto" }}
             />
           </div>
           <div>
             <img
               src={img3}
               alt=""
-              style={{ height: "18rem", width: "80%", margin: "auto" }}
+              style={{ height: "18rem", width: "90%", margin: "auto" }}
             />
           </div>
           <div>
             <img
               src={img4}
               alt=""
-              style={{ height: "18rem", width: "80%", margin: "auto" }}
+              style={{ height: "18rem", width: "90%", margin: "auto" }}
             />
           </div>
           <div>
             <img
               src={img5}
               alt=""
-              style={{ height: "18rem", width: "80%", margin: "auto" }}
+              style={{ height: "18rem", width: "90%", margin: "auto" }}
             />
           </div>
           <div>
             <img
               src={img6}
               alt=""
-              style={{ height: "18rem", width: "80%", margin: "auto" }}
+              style={{ height: "18rem", width: "90%", margin: "auto" }}
             />
           </div>
           <div>
@@ -132,7 +175,7 @@ export const LabTest = () => {
         <Box className="previouslydiv ">
           <Text className="pre">Previously Browsed By You</Text>
           <Box className="browseddiv ">
-            <Link to={""} className="body_checkdiv1">
+            <Link to={"/rtpcr"} className="body_checkdiv1">
               <img
                 src="https://assets.pharmeasy.in/web-assets/dist/dea295a0.svg"
                 alt="full body checkup"
@@ -142,7 +185,7 @@ export const LabTest = () => {
               <p className="test">Includes 87 tests</p>
               <p className="testprice">₹1,499 onwards</p>
             </Link>
-            <Link to={""} className="body_checkdiv2">
+            <Link to={"/rtpcr"} className="body_checkdiv2">
               <img
                 src="https://assets.pharmeasy.in/web-assets/dist/6b3d644c.svg"
                 alt="full body checkup"
@@ -151,7 +194,7 @@ export const LabTest = () => {
               <p className="avai">Available at 1 certified lab</p>
               <p className="testprice">₹1,499 onwards</p>
             </Link>
-            <Link to={""} className="body_checkdiv2">
+            <Link to={"/rtpcr"} className="body_checkdiv2">
               <img
                 src="https://assets.pharmeasy.in/web-assets/dist/dea295a0.svg"
                 alt="full body checkup"
@@ -167,7 +210,7 @@ export const LabTest = () => {
         <Box className="certifiedpartner">
           <p className="textcerti">Certified Partner Labs</p>
           <Box className="partnerlabsdiv">
-            <Link to="" className="covidrtpcr">
+            <Link to="/labdetails" className="covidrtpcr">
               <img
                 src="https://s3.ap-south-1.amazonaws.com/pe-neon-public/diagnostics/production/CompanyLogo/c1e61675f13e3744a29aca8e1a481c4c.png"
                 alt="full body checkup"
@@ -175,7 +218,7 @@ export const LabTest = () => {
               <p className="rtpcr">PharmEasy Labs (Covid RTPCR)</p>
               <p className="certified">NABL, CAP Certified</p>
             </Link>
-            <Link to={""} className="covidrtpcr">
+            <Link to={"/labdetails"} className="covidrtpcr">
               <img src="https://s3.ap-south-1.amazonaws.com/pe-neon-public/diagnostics/production/CompanyLogo/a0f1970bb7d73fcdbd5f08533a2484f2.png" />
               <p className="rtpcr">PharmEasy Labs (Thyrocare powered)</p>
               <p className="certified"> Certified</p>
