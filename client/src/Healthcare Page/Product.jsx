@@ -27,9 +27,8 @@ const Product = () => {
        data.sort(function(a,b){
         return a.mrp-b.mrp
       })
-       (type.length>0 ? setType([...data]): data )
-        
-      }
+      setType([...data])
+    }
        else if(val=== "price-dsc"){
         data.sort(function(a,b){
           return b.mrp - a.mrp
