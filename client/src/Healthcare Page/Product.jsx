@@ -20,7 +20,8 @@ const Product = () => {
          }
         getData();
     },[])
-    console.log(data);
+    // console.log(data);
+    console.log(type);
      
     const handleFilter = async(val)=>{
       
