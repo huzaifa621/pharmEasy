@@ -2,13 +2,14 @@ const nodemailer = require("nodemailer");
 const userModel = require("../models/user");
 const hbs = require("handlebars");
 const transport = nodemailer.createTransport({
-  host: "smtp.ethereal.email",
+  service: "gmail",
   secure: false,
-  port: 587, //465:ssl , 587 :tsl
+  port: 465, //465:ssl , 587 :tsl
   auth: {
-    user: "joshuah.denesik38@ethereal.email",
-    pass: "XXxfeRFE1PXvPnUR1f",
+    user: "pharmeasy620@gmail.com",
+    pass: "jkoueclzmizdydcc",
   },
+  host: "smtp.gmail.com",
 });
 
 const userMail = async (req, res) => {
@@ -32,8 +33,8 @@ const userMail = async (req, res) => {
 
     transport
       .sendMail({
-        from: "from@example.com",
-        to: "to@example.com",
+        from: "pharmeasy620@gmail.com",
+        to: req.body.mail,
         subject: "here is your otp.",
         // text: "hellow world 1234 monodb is good",
         html: template({ otp: otp }),
@@ -60,8 +61,8 @@ const userMail = async (req, res) => {
 
     transport
       .sendMail({
-        from: "from@example.com",
-        to: "to@example.com",
+        from: "pharmeasy620@gmail.com",
+        to: req.body.mail,
         subject: "here is your otp.",
         // text: "hellow world 1234 monodb is good",
         html: template({ otp: otp }),
@@ -93,3 +94,6 @@ async function userVerify(req, res) {
 }
 //62d7ce9fc8c9b354e8c3705b
 module.exports = { userMail, userVerify };
+
+//pharmEasy956789
+//jkoueclzmizdydcc

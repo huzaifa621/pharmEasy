@@ -132,6 +132,11 @@ const Navbar = () => {
     } catch (err) {
       setOtpState(false);
       setLoading(false);
+      toast({
+        title: `Try Again`,
+        status: "error",
+        isClosable: true,
+      });
     }
   };
   const sendOtp = async () => {
@@ -304,10 +309,7 @@ const Navbar = () => {
                       </DrawerHeader>
                       {otpState ? (
                         <DrawerBody>
-                          <Heading size="md">
-                            {" "}
-                            Enter OTP sent to {email}
-                          </Heading>
+                          <Heading size="md">Enter OTP sent to {email}</Heading>
                           <br />
 
                           <HStack>
@@ -376,6 +378,12 @@ const Navbar = () => {
                           >
                             Send Otp
                           </Button>
+                          <br />
+                          <br />
+                          <Text fontSize="sm" color="teal.500">
+                            By clicking continue, you agree with our Privacy
+                            Policy
+                          </Text>
                         </DrawerBody>
                       )}
                     </DrawerContent>
