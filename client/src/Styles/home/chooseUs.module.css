@@ -1,0 +1,14 @@
+.container {
+  margin-top: 50px;
+  padding: 0 16px;
+  color: #515a60;
+}
+
+.flexBox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flexBox > div {
+  cursor: pointer;
+}

@@ -11,24 +11,34 @@ import {
   DrawerOverlay,
   Flex,
   Heading,
+  HStack,
   Image,
   Input,
   InputGroup,
   InputLeftAddon,
   InputRightAddon,
   InputRightElement,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  PinInput,
+  PinInputField,
   Text,
   useDisclosure,
+  useToast,
 } from "@chakra-ui/react";
 import { ArrowDownIcon, SearchIcon } from "@chakra-ui/icons";
 import SelectPin from "./SelectPin";
 import Select from "react-select";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { TbDiscount2 } from "react-icons/tb";
 import { RiUser5Fill } from "react-icons/ri";
 import { HiShoppingCart } from "react-icons/hi";
 import { FiMail } from "react-icons/fi";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthContext";
 
 const options = [
   {
@@ -101,15 +111,61 @@ const Navbar = () => {
   const btnRef = useRef();
   const [otpState, setOtpState] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [otp1, setOtp1] = useState(0);
+  const [otp2, setOtp2] = useState(0);
+  const [otp3, setOtp3] = useState(0);
+  const [otp4, setOtp4] = useState(0);
+  const [emptyError, setEmptyError] = useState(false);
+  const toast = useToast();
+  const value = useContext(AuthContext);
+  console.log(value);
 
   const sendMail = async (mail) => {
     setLoading(true);
     try {
-      // const res = await axios.post("http://localhost:8080")
+      const res = await axios.post("http://localhost:8080/api/user/mail", {
+        mail,
+      });
+      localStorage.setItem("user_id", res.data.id);
       setOtpState(true);
       setLoading(false);
     } catch (err) {
       setOtpState(false);
+      setLoading(false);
+      toast({
+        title: `Try Again`,
+        status: "error",
+        isClosable: true,
+      });
+    }
+  };
+  const sendOtp = async () => {
+    setLoading(true);
+    try {
+      let otp = "";
+      otp += otp1 + otp2 + otp3 + otp4;
+      const user_id = localStorage.getItem("user_id");
+      const res = await axios.post(
+        `http://localhost:8080/api/user/verify/${user_id}`,
+        { otp: Number(otp) }
+      );
+      if (res.data === "your otp has been verified!") {
+        onClose();
+        setLoading(false);
+        localStorage.setItem("logIn", true);
+        value.setAuthState(true);
+        toast({
+          title: `User LoggedIn successfully`,
+          status: "success",
+          isClosable: true,
+        });
+      }
+    } catch (err) {
+      toast({
+        title: `Otp is Wrong`,
+        status: "error",
+        isClosable: true,
+      });
       setLoading(false);
     }
   };
@@ -176,64 +232,166 @@ const Navbar = () => {
                 style={{ marginTop: "0.2rem", marginRight: "0.4rem" }}
                 size="23px"
               />
-              <p style={{ cursor: "pointer" }} ref={btnRef} onClick={onOpen}>
-                Login/Signup
-              </p>
-              <Drawer
-                isOpen={isOpen}
-                placement="right"
-                onClose={onClose}
-                size="sm"
-                finalFocusRef={btnRef}
-              >
-                <DrawerOverlay />
-                <DrawerContent>
-                  <DrawerCloseButton />
-                  <DrawerHeader>
-                    <Flex bg="teal.500" height="100px">
-                      <Box marginTop={"1rem"} marginLeft={"1rem"}>
-                        <Image
-                          src="https://assets.pharmeasy.in/web-assets/dist/fca22bc9.png"
-                          alt=""
-                          width={"10rem"}
-                        />
-                      </Box>
+              <Menu>
+                <MenuButton
+                  style={{ cursor: "pointer", color: "white" }}
+                  ref={btnRef}
+                  onClick={onOpen}
+                >
+                  {value.authState ? "User" : "Login / Signup"}
+                </MenuButton>
+                {value.authState ? (
+                  <>
+                    <MenuList>
+                      <MenuItem color="black" _hover={{ color: "teal.500" }}>
+                        My Orders
+                      </MenuItem>
+                      <MenuItem color="black" _hover={{ color: "teal.500" }}>
+                        My Refills
+                      </MenuItem>
+                      <MenuItem color="black" _hover={{ color: "teal.500" }}>
+                        Medical Records
+                      </MenuItem>
+                      <MenuItem color="black" _hover={{ color: "teal.500" }}>
+                        My Profile
+                      </MenuItem>
+                      <MenuItem color="black" _hover={{ color: "teal.500" }}>
+                        Wallet
+                      </MenuItem>
+                      <MenuItem color="black" _hover={{ color: "teal.500" }}>
+                        Refer & Earn
+                      </MenuItem>
+                      <MenuItem color="black" _hover={{ color: "teal.500" }}>
+                        Notification
+                      </MenuItem>
+                      <MenuItem
+                        onClick={() => {
+                          localStorage.removeItem("user_id");
+                          localStorage.removeItem("logIn");
+                          value.setAuthState(false);
+                        }}
+                        color="black"
+                        _hover={{ color: "teal.500" }}
+                      >
+                        Log Out
+                      </MenuItem>
+                    </MenuList>
+                  </>
+                ) : (
+                  <Drawer
+                    isOpen={isOpen}
+                    placement="right"
+                    onClose={onClose}
+                    size="sm"
+                    finalFocusRef={btnRef}
+                  >
+                    <DrawerOverlay />
+                    <DrawerContent>
+                      <DrawerCloseButton />
+                      <DrawerHeader>
+                        <Flex bg="teal.500" height="100px">
+                          <Box marginTop={"1rem"} marginLeft={"1rem"}>
+                            <Image
+                              src="https://assets.pharmeasy.in/web-assets/dist/fca22bc9.png"
+                              alt=""
+                              width={"10rem"}
+                            />
+                          </Box>
 
-                      <Box marginTop={"1rem"} marginLeft={"3rem"}>
-                        <Image
-                          src="	https://assets.pharmeasy.in/web-assets/dist/1fe1322a.svg"
-                          alt=""
-                          width={"8rem"}
-                        />
-                      </Box>
-                    </Flex>
-                  </DrawerHeader>
+                          <Box marginTop={"1rem"} marginLeft={"3rem"}>
+                            <Image
+                              src="	https://assets.pharmeasy.in/web-assets/dist/1fe1322a.svg"
+                              alt=""
+                              width={"8rem"}
+                            />
+                          </Box>
+                        </Flex>
+                      </DrawerHeader>
+                      {otpState ? (
+                        <DrawerBody>
+                          <Heading size="md">Enter OTP sent to {email}</Heading>
+                          <br />
 
-                  <DrawerBody>
-                    <Heading size="md"> Quick Login / Register</Heading>
-                    <br />
-                    <InputGroup>
-                      <InputLeftAddon children={<FiMail />} />
-                      <Input
-                        type="email"
-                        placeholder="Email"
-                        onChange={(e) => setEmail(e.target.value)}
-                      />
-                    </InputGroup>
-                    <br />
-                    <Button
-                      onClick={() => sendMail(email)}
-                      isLoading={loading ? true : false}
-                      colorScheme="teal"
-                      size="lg"
-                      width={"25rem"}
-                    >
-                      Send Otp
-                    </Button>
-                  </DrawerBody>
-                </DrawerContent>
-              </Drawer>
+                          <HStack>
+                            <PinInput size="lg">
+                              <PinInputField
+                                onChange={(e) => setOtp1(e.target.value)}
+                              />
+                              <PinInputField
+                                onChange={(e) => setOtp2(e.target.value)}
+                              />
+                              <PinInputField
+                                onChange={(e) => setOtp3(e.target.value)}
+                              />
+                              <PinInputField
+                                onChange={(e) => setOtp4(e.target.value)}
+                              />
+                            </PinInput>
+                          </HStack>
+                          <Button
+                            onClick={() => {
+                              let otp = "";
+                              otp += otp1 + otp2 + otp3 + otp4;
+                              if (otp !== "") {
+                                sendOtp();
+                              } else {
+                                setEmptyError(true);
+                              }
+                            }}
+                            isLoading={loading ? true : false}
+                            colorScheme="teal"
+                            size="lg"
+                            style={{ marginTop: "1rem" }}
+                            width={"25rem"}
+                          >
+                            Submit
+                          </Button>
+                        </DrawerBody>
+                      ) : (
+                        <DrawerBody>
+                          <Heading size="md"> Quick Login / Register</Heading>
+                          <br />
+                          <InputGroup>
+                            <InputLeftAddon children={<FiMail />} />
+                            <Input
+                              type="email"
+                              required
+                              isInvalid={emptyError ? true : false}
+                              errorBorderColor={emptyError ? "red.300" : ""}
+                              placeholder="Email"
+                              onChange={(e) => setEmail(e.target.value)}
+                            />
+                          </InputGroup>
+                          <br />
+                          <Button
+                            onClick={() => {
+                              if (email !== "") {
+                                sendMail(email);
+                              } else {
+                                setEmptyError(true);
+                              }
+                            }}
+                            isLoading={loading ? true : false}
+                            colorScheme="teal"
+                            size="lg"
+                            width={"25rem"}
+                          >
+                            Send Otp
+                          </Button>
+                          <br />
+                          <br />
+                          <Text fontSize="sm" color="teal.500">
+                            By clicking continue, you agree with our Privacy
+                            Policy
+                          </Text>
+                        </DrawerBody>
+                      )}
+                    </DrawerContent>
+                  </Drawer>
+                )}
+              </Menu>
             </Flex>
+
             <Flex>
               <HiShoppingCart
                 style={{ marginTop: "0.2rem", marginRight: "0.4rem" }}

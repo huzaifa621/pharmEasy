@@ -1,14 +1,16 @@
 const nodemailer = require("nodemailer");
 const userModel = require("../models/user");
 const hbs = require("handlebars");
+require("dotenv").config();
 const transport = nodemailer.createTransport({
-  host: "smtp.ethereal.email",
+  service: "gmail",
   secure: false,
-  port: 587, //465:ssl , 587 :tsl
+  port: 465, //465:ssl , 587 :tsl
   auth: {
-    user: "abdul.rogahn@ethereal.email",
-    pass: "h5UMAas6Tbxte3qCzY",
+    user: process.env.EMAIL,
+    pass: process.env.PASS,
   },
+  host: "smtp.gmail.com",
 });
 
 const userMail = async (req, res) => {
@@ -24,16 +26,16 @@ const userMail = async (req, res) => {
 
     const template = hbs.compile(content);
 
-    const otp = Math.floor(100000 + Math.random() * 900000);
+    const otp = Math.floor(1000 + Math.random() * 9000);
     const newOtp = await userModel.updateOne(
-      { user_id: newUser._id },
+      { _id: newUser._id },
       { $push: { otp: otp } }
     );
 
     transport
       .sendMail({
-        from: "from@example.com",
-        to: "to@example.com",
+        from: process.env.EMAIL,
+        to: req.body.mail,
         subject: "here is your otp.",
         // text: "hellow world 1234 monodb is good",
         html: template({ otp: otp }),
@@ -52,16 +54,16 @@ const userMail = async (req, res) => {
 
     const template = hbs.compile(content);
 
-    const otp = Math.floor(100000 + Math.random() * 900000);
+    const otp = Math.floor(1000 + Math.random() * 9000);
     const newOtp = await userModel.updateOne(
-      { user_id: oldUser._id },
+      { _id: oldUser._id },
       { $push: { otp: otp } }
     );
 
     transport
       .sendMail({
-        from: "from@example.com",
-        to: "to@example.com",
+        from: "pharmeasy620@gmail.com",
+        to: req.body.mail,
         subject: "here is your otp.",
         // text: "hellow world 1234 monodb is good",
         html: template({ otp: otp }),
@@ -84,12 +86,15 @@ async function userVerify(req, res) {
     if (otpArr[otpArr.length - 1] === otp) {
       return res.send("your otp has been verified!");
     } else {
-      return res.status(403).send("otp is wrong");
+      return res.status(404).send("otp is wrong");
     }
   } catch (err) {
     console.log("err:", err);
-    return res.status(403).send("Something went wrong");
+    return res.status(404).send("Something went wrong");
   }
 }
 //62d7ce9fc8c9b354e8c3705b
 module.exports = { userMail, userVerify };
+
+//pharmEasy956789
+//jkoueclzmizdydcc
