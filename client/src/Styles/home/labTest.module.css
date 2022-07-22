@@ -1,0 +1,24 @@
+.container {
+  margin-top: 50px;
+  padding: 0px 6px;
+  padding-top: 60px;
+  background-color: #d4e2fa;
+  height: 180px;
+}
+
+.firstCard {
+  color: gray;
+}
+
+.box {
+  padding: 16px;
+  border: 1px solid lightgray;
+  width: max-content;
+  border-radius: 5px;
+  background: white;
+}
+
+.bottomDiv {
+  display: flex;
+  justify-content: space-between;
+}
