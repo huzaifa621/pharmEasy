@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
-import styles from "../Styles/Desc.module.css"
+import styles from "../../Styles/Desc.module.css"
 import axios from "axios"
 import { Heading } from '@chakra-ui/react'
 import { Button, ButtonGroup } from '@chakra-ui/react'
@@ -9,6 +9,9 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {BsArrowLeft, BsArrowRight} from "react-icons/bs";
+import { Navigate, useNavigate } from 'react-router-dom'
+import { Select } from '@chakra-ui/react'
+
 
 
 function SampleNextArrow(props) {
@@ -24,6 +27,7 @@ function SampleNextArrow(props) {
 
 function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
+  
   return (
     <BsArrowLeft
       className={className}
@@ -38,11 +42,13 @@ function SamplePrevArrow(props) {
 const Desc = () => {
   const[desData,setDesdata] = useState([])
   const[slider,setSlider] = useState([])
-
+  const[qty,setQty]=useState([1])
+  const[val,setVal] = useState("")
+  const navigate = useNavigate()
     const detail = JSON.parse(localStorage.getItem("productDetails"))
     const detail2 = JSON.parse(localStorage.getItem("frequently"))
 
-    console.log(detail2,"detail")
+    // console.log(desData,"detail")
 
     useEffect(() => {
 
@@ -53,7 +59,7 @@ const Desc = () => {
 
     const getData2 = () =>{
       axios.get(`http://localhost:8080/api/product?q=${detail2}`).then(({data})=>{
-        console.log(data,"data")
+        // console.log(data,"data")
         setSlider(data)
 
       })
@@ -71,19 +77,50 @@ const Desc = () => {
     const handleClick  = () => {
       console.log(desData.img1)
       desData.img1=desData.img2
-  console.log(detail);
+      // console.log(detail);
 
     }
-    const handleClick1 = () => {
+    var product_id = desData._id
+    var Qty = val
+    var UserId = "62d7ce9fc8c9b354e8c3705b"
+   
+    // console.log(Qty,"qty")
+
+    // console.log( product_id,"productId")
+
+    const handleAddToCart = () => {
+
+      console.log(product_id,Qty,UserId,"cart")
+      // axios.post("/",{
+      //   productId:product_id,
+      //   qty:1,
+      //   user_id: "62d7ce9fc8c9b354e8c3705b"
+      // })
+    }
+
+    const handleAddToCartS = (el) => {
+      // var product_idS = el._id
+
+      console.log(el,"slider")
+
+      // console.log(product_idS,Qty,UserId,"slider")
+      // axios.post("/",{
+      //   productId:product_idS,
+      //   qty:1,
+      //   user_id: "62d7ce9fc8c9b354e8c3705b"
+      // })
+    }
+    const handleClick3 = () => {
       console.log("cart")
+      navigate("/cart")
     }
     // console.log((Number(desData.mrp)),Number(desData.strike))
   useEffect(() => {
     getData();
   }, []);
 
-    var offer = ((Number(desData.mrp)/Number(desData.strike))*100).toFixed(2)
-    console.log(offer,"offer")
+    var offer = (100-(Number(desData.mrp)/Number(desData.strike))*100).toFixed(2)
+    // console.log(offer,"offer")
 
 
     var settings = {
@@ -131,15 +168,26 @@ const Desc = () => {
 
                 </div>
                 <div  className={styles.main_div3}>
-                <Stack spacing={4} direction='row' align='center'>
-                  <Button onClick={handleClick1} colorScheme='teal' size='lg'>Add to Cart</Button>
-                </Stack>
+                <Select onClick={handleAddToCart} color='white' backgroundColor='teal' onChange={(e) => setVal(e.target.value)}  placeholder='Add to Cart'>
+                        <option  style={{color:'black'}} value='1'>1</option>
+                        <option  style={{color:'black'}} value='2'>2</option>
+                        <option  style={{color:'black'}} value='3'>3</option>
+                        <option  style={{color:'black'}} value='4'>4</option>
+                        <option  style={{color:'black'}} value='5'>5</option>
+                        <option  style={{color:'black'}} value='6'>6</option>
+                        <option  style={{color:'black'}} value='7'>7</option>
+                        <option  style={{color:'black'}} value='8'>8</option>
+                        <option  style={{color:'black'}} value='9'>9</option>
+                        <option  style={{color:'black'}} value='10'>10</option>
+                </Select>
+
                 </div>
 
                 <div  className={styles.main_div4}>
                   <p style={{fontWeight:"bold"}}>Items in Cart</p>
+                     
                   <Stack spacing={4} direction='row' align='center' marginTop='1rem' marginBottom='4rem'>
-                      <Button colorScheme='teal' size='lg' width='20rem'>
+                      <Button onClick={handleClick3} colorScheme='teal' size='lg' width='20rem'>
                        View Cart {'>'}
                       </Button>
                   </Stack>
@@ -171,22 +219,29 @@ const Desc = () => {
                 <div className={styles.slider_1_div}>
                       <div className={styles.slider_1_div_flex}>
                       <img className={styles.slider_img} src={el.img1}/>
-                      <p>{el.title}</p>
-                      <p style={{textDecorationLine: 'line-through', textDecorationStyle: 'solid'}}>{'\u20B9'}{el.strike}</p>
+                      <p style={{height:'7rem',fontSize:'13px'}}>{el.title}</p>
+                      <p style={{ fontSize:'13px', textDecorationLine: 'line-through', textDecorationStyle: 'solid'}}>MRP {'\u20B9'}{el.strike}</p>
                       <p>{'\u20B9'} {el.mrp} </p>
-                      {offer}%OFF
-                      <Stack direction='row' spacing={4} align='center'>
-                      <Button marginTop='1rem' width='20vh' colorScheme='teal' variant='outline'>
-                        Add
-                      </Button>
-                      </Stack>
+
+                      <Select onClick={handleAddToCartS(el)} color='teal' margin='auto' width='25vh' onChange={(e) => setVal(e.target.value)}  placeholder='Add to Cart'>
+                        <option  style={{color:'black'}} value='1'>1</option>
+                        <option  style={{color:'black'}} value='2'>2</option>
+                        <option  style={{color:'black'}} value='3'>3</option>
+                        <option  style={{color:'black'}} value='4'>4</option>
+                        <option  style={{color:'black'}} value='5'>5</option>
+                        <option  style={{color:'black'}} value='6'>6</option>
+                        <option  style={{color:'black'}} value='7'>7</option>
+                        <option  style={{color:'black'}} value='5'>8</option>
+                        <option  style={{color:'black'}} value='6'>9</option>
+                        <option  style={{color:'black'}} value='7'>10</option>
+                     </Select>
                       </div>
                 </div>
                 </>
                 })}
               </Slider>
 
-        </div>
+            </div>
 
           <div className={styles.bottom_1}>
           <div>
@@ -211,8 +266,8 @@ const Desc = () => {
                 Refer FAQs section for more details.</p>
           </div>
 
-        </div>
-        <div className={styles.bottom_2}>
+          </div>
+          <div className={styles.bottom_2}>
           <div className={styles.bottom_21}>
             <img src="https://assets.pharmeasy.in/web-assets/_next/icons/footerMobile.jpg" alt=""/>
           </div>
@@ -232,7 +287,7 @@ const Desc = () => {
             </div>
             </div>
           </div>
-        </div>
+          </div>
 
       </div>
       </>
