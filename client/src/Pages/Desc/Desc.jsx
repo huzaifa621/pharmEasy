@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
-import styles from "../Styles/Desc.module.css"
+import styles from "../../Styles/Desc.module.css"
 import axios from "axios"
 import { Heading } from '@chakra-ui/react'
 import { Button, ButtonGroup } from '@chakra-ui/react'
@@ -9,6 +9,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {BsArrowLeft, BsArrowRight} from "react-icons/bs";
+import { Navigate, useNavigate } from 'react-router-dom'
+
 
 
 function SampleNextArrow(props) {
@@ -38,11 +40,11 @@ function SamplePrevArrow(props) {
 const Desc = () => {
   const[desData,setDesdata] = useState([])
   const[slider,setSlider] = useState([])
-
+  const navigate = useNavigate()
     const detail = JSON.parse(localStorage.getItem("productDetails"))
     const detail2 = JSON.parse(localStorage.getItem("frequently"))
 
-    console.log(detail2,"detail")
+    console.log(desData,"detail")
 
     useEffect(() => {
 
@@ -53,7 +55,7 @@ const Desc = () => {
 
     const getData2 = () =>{
       axios.get(`http://localhost:8080/api/product?q=${detail2}`).then(({data})=>{
-        console.log(data,"data")
+        // console.log(data,"data")
         setSlider(data)
 
       })
@@ -71,11 +73,22 @@ const Desc = () => {
     const handleClick  = () => {
       console.log(desData.img1)
       desData.img1=desData.img2
-  console.log(detail);
+      // console.log(detail);
 
     }
-    const handleClick1 = () => {
+    var product_id = desData._id
+    console.log( product_id,"productId")
+    const handleAddToCart = () => {
+      axios.post("/",{
+        productId:product_id,
+        qty:1,
+        user_id: "62d7ce9fc8c9b354e8c3705b"
+      })
+      navigate("/cart")
+    }
+    const handleClick3 = () => {
       console.log("cart")
+      navigate("/cart")
     }
     // console.log((Number(desData.mrp)),Number(desData.strike))
   useEffect(() => {
@@ -83,7 +96,7 @@ const Desc = () => {
   }, []);
 
     var offer = ((Number(desData.mrp)/Number(desData.strike))*100).toFixed(2)
-    console.log(offer,"offer")
+    // console.log(offer,"offer")
 
 
     var settings = {
@@ -132,14 +145,14 @@ const Desc = () => {
                 </div>
                 <div  className={styles.main_div3}>
                 <Stack spacing={4} direction='row' align='center'>
-                  <Button onClick={handleClick1} colorScheme='teal' size='lg'>Add to Cart</Button>
+                  <Button onClick={handleAddToCart} colorScheme='teal' size='lg'>Add to Cart</Button>
                 </Stack>
                 </div>
 
                 <div  className={styles.main_div4}>
                   <p style={{fontWeight:"bold"}}>Items in Cart</p>
                   <Stack spacing={4} direction='row' align='center' marginTop='1rem' marginBottom='4rem'>
-                      <Button colorScheme='teal' size='lg' width='20rem'>
+                      <Button onClick={handleClick3} colorScheme='teal' size='lg' width='20rem'>
                        View Cart {'>'}
                       </Button>
                   </Stack>
@@ -171,12 +184,11 @@ const Desc = () => {
                 <div className={styles.slider_1_div}>
                       <div className={styles.slider_1_div_flex}>
                       <img className={styles.slider_img} src={el.img1}/>
-                      <p>{el.title}</p>
-                      <p style={{textDecorationLine: 'line-through', textDecorationStyle: 'solid'}}>{'\u20B9'}{el.strike}</p>
+                      <p style={{height:'7rem',fontSize:'13px'}}>{el.title}</p>
+                      <p style={{ fontSize:'13px', textDecorationLine: 'line-through', textDecorationStyle: 'solid'}}>MRP {'\u20B9'}{el.strike}</p>
                       <p>{'\u20B9'} {el.mrp} </p>
-                      {offer}%OFF
                       <Stack direction='row' spacing={4} align='center'>
-                      <Button marginTop='1rem' width='20vh' colorScheme='teal' variant='outline'>
+                      <Button onClick={handleAddToCart} margin='auto' width='20vh' colorScheme='teal' variant='outline'>
                         Add
                       </Button>
                       </Stack>

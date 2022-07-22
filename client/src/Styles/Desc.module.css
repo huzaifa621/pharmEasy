@@ -120,19 +120,24 @@ h1,p,h4{
 
 .slider_1_div{
     padding: 0.5rem;
+    text-align: center;
     /* border: 1px solid black; */
   
 }
 .slider_img{
-    width: 50vh;
-    height: 20vh;
+    width: 16vh;
+    height: 19vh;
+    margin: auto;
+    box-sizing: border-box;
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
 .slider_1_div_flex{
     font-weight: 600;
     border: 1px solid rgb(238, 233, 233);
     border-radius: 5px;
     padding: 1rem;
-    height: 70vh;
+    height: 60vh;
     /* border: 1px solid red; */
 }
 .slider_1_div_flex>p{
