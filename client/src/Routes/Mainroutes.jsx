@@ -1,8 +1,12 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+
+
+
 import Desc from "../Pages/Desc/Desc";
 import LabDetails from "../Pages/Labdetails/LabDetails";
 import { LabTest } from "../Pages/LabTest";
+
 import OrderMedicines from "../Pages/OrderMedicines";
 
 import { Rtcprtest } from "../Pages/RtpcrTest/Rtcprtest";

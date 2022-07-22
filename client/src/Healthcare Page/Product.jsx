@@ -10,16 +10,18 @@ import { Box ,Grid, Heading, Image,Text,Select ,Stack,Checkbox, Divider} from "@
 const Product = () => {
     const [data,setData]=useState([]);
     const [type,setType]=useState([]);
+
    
 
     useEffect(()=>{
         const getData= async()=>{
             let res=await axios.get("http://localhost:8080/api/product?q=Personal Care");
             setData(res.data);
-        }
+         }
         getData();
     },[])
     // console.log(data);
+    console.log(type);
      
     const handleFilter = async(val)=>{
       
@@ -27,12 +29,23 @@ const Product = () => {
        data.sort(function(a,b){
         return a.mrp-b.mrp
       })
-       (type.length>0 ? setType([...data]): data )
-        
-      }
+      setType([...data])
+    }
        else if(val=== "price-dsc"){
         data.sort(function(a,b){
           return b.mrp - a.mrp
+        })
+        setType([...data])
+      }
+      else if(val==="atoz"){
+        data.sort(function(a,b){
+          return a.title.localeCompare(b.title)
+        })
+        setType([...data])
+      }
+      else if(val==="ztoa"){
+        data.sort(function(a,b){
+          return b.title.localeCompare(a.title)
         })
         setType([...data])
       }
@@ -43,15 +56,89 @@ const Product = () => {
         setType([...data]);
       }
       else if(val==="below99"){
-       let d = data.filter((a)=>{
-        if(a.mrp<99){
-          return a
+          let d = data.filter((a)=>(a.mrp<99?a:""))
+          return setData([...d]);
         }
-       })
-       console.log(d)
-
-        setType([...d])
-      }    
+      else if(val==="100-199"){
+        let d = data.filter((a)=>(a.mrp>99&&a.mrp<200?a:""))
+          return  setData([...d])
+        }
+        else if(val==="200-299"){
+          let d = data.filter((a)=>(a.mrp>199&&a.mrp<300?a:""))
+            return  setData([...d])
+          }
+          else if(val==="300-399"){
+            let d = data.filter((a)=>(a.mrp>299&&a.mrp<400?a:""))
+              return  setData([...d])
+            }
+            else if(val==="400-499"){
+              let d = data.filter((a)=>(a.mrp>399&&a.mrp<500?a:""))
+                return  setData([...d])
+              }
+              else if(val==="above500"){
+                let d = data.filter((a)=>(a.mrp>499?a:""))
+                  return  setData([...d])
+                }  
+                else if(val==="chiphands"){
+                  let d = data.filter((a)=>(a.brand==="Chiphands"?a:""))
+                    return  setData([...d])
+                  }
+                  else if(val==="arachitol"){
+                    let d = data.filter((a)=>(a.brand==="Arachitol"?a:""))
+                      return  setData([...d])
+                    }
+                    else if(val==="accusure"){
+                      let d = data.filter((a)=>(a.brand==="Accusure"?a:""))
+                        return  setData([...d])
+                      }
+                      else if(val==="baidyanath"){
+                        let d = data.filter((a)=>(a.brand==="Baidyanath"?a:""))
+                          return  setData([...d])
+                        } 
+                        else if(val==="zandu"){
+                          let d = data.filter((a)=>(a.brand==="Zandu"?a:""))
+                            return  setData([...d])
+                          }
+                          else if(val==="durex"){
+                            let d = data.filter((a)=>(a.brand==="Durex"?a:""))
+                              return  setData([...d])
+                            } 
+                            else if(val==="nivea"){
+                              let d = data.filter((a)=>(a.brand==="Nivea"?a:""))
+                                return  setData([...d])
+                              }    
+                              else if(val==="sugarpop"){
+                                let d = data.filter((a)=>(a.brand==="Sugar Pop"?a:""))
+                                  return  setData([...d])
+                                }
+                                else if(val==="wildstone"){
+                                  let d = data.filter((a)=>(a.brand==="Wild Stone"?a:""))
+                                    return  setData([...d])
+                                  } 
+                                  else if(val==="beauty"){
+                                    let d = data.filter((a)=>(a.ancestor[1]==="Beauty"?a:""))
+                                      return  setData([...d])
+                                    }  
+                                    else if(val==="ayurvediccare"){
+                                      let d = data.filter((a)=>(a.ancestor[1]==="Ayurvedic Care"?a:""))
+                                        return  setData([...d])
+                                      } 
+                                      else if(val==="sexualwellness"){
+                                        let d = data.filter((a)=>(a.ancestor[1]==="Sexual Wellness"?a:""))
+                                          return  setData([...d])
+                                        }     
+                                        else if(val==="homecare"){
+                                          let d = data.filter((a)=>(a.ancestor[1]==="Home Care"?a:""))
+                                            return  setData([...d])
+                                          } 
+                                          else if(val==="skincare"){
+                                            let d = data.filter((a)=>(a.ancestor[1]==="Skin Care"?a:""))
+                                              return  setData([...d])
+                                            } 
+                                            else if(val==="fitness"){
+                                              let d = data.filter((a)=>(a.ancestor[1]==="Health Food and Drinks"?a:""))
+                                                return  setData([...d])
+                                              }           
     }
 
       return (
@@ -69,101 +156,111 @@ const Product = () => {
       <Divider m={'2rem'}/>
       <Heading fontSize='lg' m={'1rem'} >Sub Category</Heading>
         <Stack>
-       <Checkbox colorScheme='green' m='0.5rem' >
+       <Checkbox colorScheme='green' m='0.5rem' value='ayurvediccare' onChange={(e)=>{handleFilter(e.target.value)}}>
        Ayurvedic Medicines
        </Checkbox>
        </Stack>
        <Stack>
-       <Checkbox colorScheme='green' m='0.5rem' >
+       <Checkbox colorScheme='green' m='0.5rem' value='homecare' onChange={(e)=>{handleFilter(e.target.value)}}>
        Homeopathic Medicine
        </Checkbox>
        </Stack>
        <Stack>
-       <Checkbox colorScheme='green' m='0.5rem' >
+       <Checkbox colorScheme='green' m='0.5rem' value='beauty' onChange={(e)=>{handleFilter(e.target.value)}}>
         Beauty
        </Checkbox>
        </Stack>
        <Stack>
-       <Checkbox colorScheme='green' m='0.5rem' >
+       <Checkbox colorScheme='green' m='0.5rem' value='sexualwellness' onChange={(e)=>{handleFilter(e.target.value)}} >
         Sexuall Wellness
        </Checkbox>
        </Stack>
        <Stack>
-       <Checkbox colorScheme='green' m='0.5rem' >
+       <Checkbox colorScheme='green' m='0.5rem' value='skincare' onChange={(e)=>{handleFilter(e.target.value)}}>
         Skin
        </Checkbox>
        </Stack>
        <Stack>
-       <Checkbox colorScheme='green' m='0.5rem' >
+       <Checkbox colorScheme='green' m='0.5rem' value='fitness' onChange={(e)=>{handleFilter(e.target.value)}}>
         Fitness Medicines
        </Checkbox>
        </Stack>
        <Divider m='1rem' />
        <Heading fontSize='lg' m={'1rem'} > Brand</Heading>
+       <Stack>
+       <Checkbox colorScheme='green' m='0.5rem' value='arachitol' onChange={(e)=>{handleFilter(e.target.value)}} >
+        Arachitol
+       </Checkbox>
+       </Stack>
+       <Stack>
+       <Checkbox colorScheme='green' m='0.5rem' value='chiphands' onChange={(e)=>{handleFilter(e.target.value)}}>
+        Chiphands
+       </Checkbox>
+       </Stack>
         <Stack>
-       <Checkbox colorScheme='green' m='0.5rem' >
+       <Checkbox colorScheme='green' m='0.5rem' value='baidyanath' onChange={(e)=>{handleFilter(e.target.value)}} >
         Baidyanath
        </Checkbox>
        </Stack>
        <Stack>
-       <Checkbox colorScheme='green' m='0.5rem' >
+       <Checkbox colorScheme='green' m='0.5rem' value='zandu' onChange={(e)=>{handleFilter(e.target.value)}} >
         Zandu
        </Checkbox>
        </Stack>
        <Stack>
-       <Checkbox colorScheme='green' m='0.5rem' >
+       <Checkbox colorScheme='green' m='0.5rem' value='durex' onChange={(e)=>{handleFilter(e.target.value)}} >
         Durex
        </Checkbox>
        </Stack>
        <Stack>
-       <Checkbox colorScheme='green' m='0.5rem' >
-        &Me
+       <Checkbox colorScheme='green' m='0.5rem' value='nivea' onChange={(e)=>{handleFilter(e.target.value)}}>
+        Nivea
        </Checkbox>
        </Stack>
        <Stack>
-       <Checkbox colorScheme='green' m='0.5rem' >
-        Covid Test Kits & Masks
+       <Checkbox colorScheme='green' m='0.5rem' value='accusure' onChange={(e)=>{handleFilter(e.target.value)}} >
+        Accusure
        </Checkbox>
        </Stack>
        <Stack>
-       <Checkbox colorScheme='green' m='0.5rem' >
-         Men Care
+       <Checkbox colorScheme='green' m='0.5rem' value='sugarpop' onChange={(e)=>{handleFilter(e.target.value)}}>
+         Sugar Pop
        </Checkbox>
        </Stack>
        <Stack>
-       <Checkbox colorScheme='green' m='0.5rem' >
-        Women Care
+       <Checkbox colorScheme='green' m='0.5rem' value='wildstone' onChange={(e)=>{handleFilter(e.target.value)}}>
+        Wild Stone
        </Checkbox>
        </Stack>
        <Divider m={'2rem'}/>
        <Heading fontSize='lg' m={'1rem'} > Price</Heading>
         <Stack >
-       <Checkbox colorScheme='green' m='0.5rem' value='below99' onChange={(e)=>{handleFilter(e.target.value)}} >
+       <Checkbox  colorScheme='green' m='0.5rem' value='below99' onChange={(e)=>{handleFilter(e.target.value)}} >
        Below 99
        </Checkbox>
        </Stack>
        <Stack>
-       <Checkbox colorScheme='green' m='0.5rem' >
+       <Checkbox colorScheme='green' m='0.5rem' value='100-199' onChange={(e)=>{handleFilter(e.target.value)}} >
         100 - 199
        </Checkbox>
        </Stack>
        <Stack>
-       <Checkbox colorScheme='green' m='0.5rem' >
+       <Checkbox colorScheme='green' m='0.5rem' value='200-299' onChange={(e)=>{handleFilter(e.target.value)}} >
         200 - 299
        </Checkbox>
        </Stack>
        <Stack>
-       <Checkbox colorScheme='green' m='0.5rem' >
+       <Checkbox colorScheme='green' m='0.5rem' value='300-399' onChange={(e)=>{handleFilter(e.target.value)}} >
         300 - 399
        </Checkbox>
        </Stack>
        <Stack >
-       <Checkbox colorScheme='green' m='0.5rem' >
+       <Checkbox colorScheme='green' m='0.5rem' value='400-499' onChange={(e)=>{handleFilter(e.target.value)}} >
         400 - 499
        </Checkbox>
        </Stack>
        <Stack>
-       <Checkbox colorScheme='green' m='0.5rem' >
+       <Checkbox colorScheme='green' m='0.5rem' value='above500' onChange={(e)=>{handleFilter(e.target.value)}} >
        Above 500
        </Checkbox>
        </Stack>
@@ -177,6 +274,8 @@ const Product = () => {
           <option value='discount'>Discount</option>
           <option value='price-asc'>Price low to high</option>
           <option value='price-dsc'>Price High to low</option>
+          <option value='atoz'>Alphabetically A to Z</option>
+          <option value='ztoa'>Alphabetically Z to A</option>
          </Select>
        </Box>
         <Grid templateRows='repeat(4,1fr)' templateColumns='repeat(3, 1fr)'  gap='6' padding={'1rem'} >
