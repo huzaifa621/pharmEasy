@@ -14,32 +14,43 @@ const Product = () => {
 
     useEffect(()=>{
         const getData= async()=>{
-            let res=await axios.get("http://localhost:8080/api/product?q=");
+            let res=await axios.get("http://localhost:8080/api/product?q=Personal Care");
             setData(res.data);
         }
         getData();
     },[])
     // console.log(data);
-
+     
     const handleFilter = async(val)=>{
       
       if(val==="price-asc"){
        data.sort(function(a,b){
         return a.mrp-b.mrp
       })
-        setType([...data,data])
+       (type.length>0 ? setType([...data]): data )
+        
       }
        else if(val=== "price-dsc"){
         data.sort(function(a,b){
           return b.mrp - a.mrp
         })
-        setType([...data,data])
+        setType([...data])
       }
       else if(val==="discount"){
         data.sort(function(a,b){
           return b.discount - a.discount
         })
-        setType([...data,data]);
+        setType([...data]);
+      }
+      else if(val==="below99"){
+       let d = data.filter((a)=>{
+        if(a.mrp<99){
+          return a
+        }
+       })
+       console.log(d)
+
+        setType([...d])
       }    
     }
 
@@ -126,8 +137,8 @@ const Product = () => {
        </Stack>
        <Divider m={'2rem'}/>
        <Heading fontSize='lg' m={'1rem'} > Price</Heading>
-        <Stack>
-       <Checkbox colorScheme='green' m='0.5rem' >
+        <Stack >
+       <Checkbox colorScheme='green' m='0.5rem' value='below99' onChange={(e)=>{handleFilter(e.target.value)}} >
        Below 99
        </Checkbox>
        </Stack>
@@ -146,7 +157,7 @@ const Product = () => {
         300 - 399
        </Checkbox>
        </Stack>
-       <Stack>
+       <Stack >
        <Checkbox colorScheme='green' m='0.5rem' >
         400 - 499
        </Checkbox>
