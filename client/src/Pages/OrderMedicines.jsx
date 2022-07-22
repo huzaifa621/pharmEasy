@@ -1,4 +1,3 @@
-
 import styles from "../Styles/OrderMedicine.module.css"
 import { Heading } from '@chakra-ui/react'
 import React, { Component } from "react";
@@ -17,15 +16,17 @@ import axios from "axios"
 
 
 const options = [
-  { value: 'Ecosprin 75mg Strip Of 14 Tablets', label: 'Ecosprin 75mg Strip Of 14 Tablets' },
-  { value: 'Dolo 650mg Stip Of 15 Tablets', label: 'Dolo 650mg Stip Of 15 Tablets' },
-  { value: 'Evion 400mg Strip of 10 Capsules', label: 'Evion 400mg Strip of 10 Capsules' },
-  { value: 'Pan 40mg Strip of 15 Tablets', label: 'Pan 40mg Strip of 15 Tablets' },
-  { value: 'Pharmeasy Multivitamin', label: 'Pharmeasy Multivitamin' },
-  { value: 'Dolo 650mg Stip Of 15 Tablets', label: 'Dolo 650mg Stip Of 15 Tablets' },
-  { value: 'Ecosprin 75mg Strip Of 14 Tablets', label: 'Ecosprin 75mg Strip Of 14 Tablets' },
-  { value: 'Pharmeasy Multivitamin', label: 'Pharmeasy Multivitamin' },
-  { value: 'Ecosprin 75mg Strip Of 14 Tablets', label: 'Ecosprin 75mg Strip Of 14 Tablets' }
+  { value: 'Ecosprin 75mg Strip Of 14 Tablets',v2:"Ayurvedic Care", label: 'Ecosprin 75mg Strip Of 14 Tablets' },
+  // { value: 'Dolo 650mg Stip Of 15 Tablets',v2:"Fitness & Supplements", label: 'Dolo 650mg Stip Of 15 Tablets' },
+  { value: 'Evion 400mg Strip of 10 Capsules',v2:"Health Food and Drinks",label: 'Evion 400mg Strip of 10 Capsules' },
+  { value: 'Pan 40mg Strip of 15 Tablets',v2:"Home Care", label: 'Pan 40mg Strip of 15 Tablets' },
+  { value: 'Pharmeasy Multivitamin',v2:"Beauty", label: 'Pharmeasy Multivitamin' },
+  // { value: 'Dolo 650mg Stip Of 15 Tablets',v2:"Skin Care", label: 'Dolo 650mg Stip Of 15 Tablets' },
+  { value: 'Ecosprin 75mg Strip Of 14 Tablets',v2:"Sexual Wellness", label: 'Ecosprin 75mg Strip Of 14 Tablets' },
+  { value: 'Pharmeasy Multivitamin',v2:"Personal Care", label: 'Pharmeasy Multivitamin' },
+  { value: 'Ecosprin 75mg Strip Of 14 Tablets',v2:"Skin Care", label: 'Ecosprin 75mg Strip Of 14 Tablets' },
+  { value: 'Evion 400mg Strip of 10 Capsules',v2:"Fitness & Supplements",label: 'Evion 400mg Strip of 10 Capsules' },
+  { value: 'Pan 40mg Strip of 15 Tablets',v2:"Home Care", label: 'Pan 40mg Strip of 15 Tablets' },
 ]
 
 function SampleNextArrow(props) {
@@ -55,15 +56,14 @@ const OrderMedicines = () => {
   const[val,setVal] = useState("")
   const navigate = useNavigate()
 
-  // console.log(val.value,"val")
+  console.log(val.value,"val")
   var details = val.value
+  var details2 = val.v2
  
   if(val.value)
-  {
-    // axios.get(`http://localhost:8080/api/product/single/${details}`).then(({data})=>{
-    //   console.log(data)
-    // })
-   localStorage.setItem("productDetails",details)
+  {   
+   localStorage.setItem("productDetails",JSON.stringify(details))
+   localStorage.setItem("frequently",JSON.stringify(details2))
    navigate("/productdetails")
   }
 

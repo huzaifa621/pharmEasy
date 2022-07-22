@@ -1,21 +1,21 @@
 .container {
-    background-color: #f2f5f5;
-    box-sizing: border-box;
-    padding: 40px 8px;
+  background-color: #f2f5f5;
+  box-sizing: border-box;
+  padding: 40px 8px;
 }
 
 .heading {
-    font-size: 26px;
-    color: #4f585e;
-    margin: 0;
+  font-size: 26px;
+  color: #4f585e;
+  margin: 0;
 }
 
 .app_download {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 20px;
 }
 
 .app_download img {
-    height: 50px;
-    width: 163px;
+  height: 50px;
+  width: 163px;
 }
