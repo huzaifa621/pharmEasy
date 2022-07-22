@@ -28,20 +28,31 @@ const Product = () => {
        data.sort(function(a,b){
         return a.mrp-b.mrp
       })
-      setType([...data,data])
+      setType([...data])
     }
        else if(val=== "price-dsc"){
         data.sort(function(a,b){
           return b.mrp - a.mrp
         })
-        setType([...data,data])
+        setType([...data])
+      }
+      else if(val==="atoz"){
+        data.sort(function(a,b){
+          return a.title.localeCompare(b.title)
+        })
+        setType([...data])
+      }
+      else if(val==="ztoa"){
+        data.sort(function(a,b){
+          return b.title.localeCompare(a.title)
+        })
+        setType([...data])
       }
       else if(val==="discount"){
         data.sort(function(a,b){
           return b.discount - a.discount
         })
-        setType([...data,data]);
-        console.log(type)
+        setType([...data]);
       }
       else if(val==="below99"){
           let d = data.filter((a)=>(a.mrp<99?a:""))
@@ -262,6 +273,8 @@ const Product = () => {
           <option value='discount'>Discount</option>
           <option value='price-asc'>Price low to high</option>
           <option value='price-dsc'>Price High to low</option>
+          <option value='atoz'>Alphabetically A to Z</option>
+          <option value='ztoa'>Alphabetically Z to A</option>
          </Select>
        </Box>
         <Grid templateRows='repeat(4,1fr)' templateColumns='repeat(3, 1fr)'  gap='6' padding={'1rem'} >
