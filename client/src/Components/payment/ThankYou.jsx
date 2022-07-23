@@ -12,7 +12,9 @@ const ThankYou = () => {
   useEffect(() => {
     const moveToOrder = async () => {
       const user_id = localStorage.getItem("user_id");
-      await axios.get(`http://localhost:8080/api/cart/payment/${user_id}`);
+      await axios.get(
+        `https://pharmeasylion.herokuapp.com/api/cart/payment/${user_id}`
+      );
     };
     moveToOrder();
   }, []);

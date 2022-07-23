@@ -118,7 +118,7 @@ const Cart = () => {
 
   const getData2 = () => {
     axios
-      .get(`http://localhost:8080/api/product?q=${detail2}`)
+      .get(`https://pharmeasylion.herokuapp.com/api/product?q=${detail2}`)
       .then(({ data }) => {
         // console.log(data,"data")
         setSlider(data);
@@ -129,7 +129,7 @@ const Cart = () => {
 
   const getCartdata = async () => {
     await axios
-      .get(`http://localhost:8080/api/cart/${UserId}`)
+      .get(`https://pharmeasylion.herokuapp.com/api/cart/${UserId}`)
       .then(({ data }) => {
         setCartdata(data);
       });
@@ -148,8 +148,7 @@ const Cart = () => {
         </div>
       </>
     );
-  } 
-  else {
+  } else {
     var Length = cartdata.cartProduct.length;
     console.log(Cart);
 
@@ -162,8 +161,7 @@ const Cart = () => {
       Total = Total + Cart[i].product.mrp * Cart[i].qty;
       TotalStrike = TotalStrike + Cart[i].product.strike * Cart[i].qty;
     }
-    if(sum==0)
-    {
+    if (sum == 0) {
       return (
         <>
           <div style={{ margin: "auto", width: "90vh" }}>
@@ -186,7 +184,7 @@ const Cart = () => {
     const deletePro = async (user_id, product_id) => {
       try {
         const res = await axios.delete(
-          `http://localhost:8080/api/cart/delete/${user_id}/${product_id}`
+          `https://pharmeasylion.herokuapp.com/api/cart/delete/${user_id}/${product_id}`
         );
         getCartdata();
       } catch (err) {}

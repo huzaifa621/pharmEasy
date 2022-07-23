@@ -17,7 +17,7 @@ const Myorders = () => {
     const order = async () => {
       const user_id = localStorage.getItem("user_id");
       const res = await axios.get(
-        `http://localhost:8080/api/ordered/${user_id}`
+        `https://pharmeasylion.herokuapp.com/api/ordered/${user_id}`
       );
       // console.log(res.data);
       setOrderlist(res.data);
@@ -59,10 +59,14 @@ const Myorders = () => {
   const data = timeSince(new Date(orderlist.createdAt));
   // console.log(list,"list")
   // console.log(orderId)
+  let total = 0;
+  for (let el of list) {
+    total += el.product.mrp * el.qty;
+  }
 
-  var total = localStorage.getItem("total");
+  // var total = localStorage.getItem("total");
 
-  if (list == undefined) {
+  if (list === undefined) {
     return (
       <Box>
         <Box w={"92%"} m="6rem auto auto auto" display={"flex"}>

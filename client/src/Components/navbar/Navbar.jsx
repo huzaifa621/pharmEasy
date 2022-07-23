@@ -189,9 +189,12 @@ const Navbar = () => {
   const sendMail = async (mail) => {
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:8080/api/user/mail", {
-        mail,
-      });
+      const res = await axios.post(
+        "https://pharmeasylion.herokuapp.com/api/user/mail",
+        {
+          mail,
+        }
+      );
       localStorage.setItem("user_id", res.data.id);
       setOtpState(true);
       setLoading(false);
@@ -212,7 +215,7 @@ const Navbar = () => {
       otp += otp1 + otp2 + otp3 + otp4;
       const user_id = localStorage.getItem("user_id");
       const res = await axios.post(
-        `http://localhost:8080/api/user/verify/${user_id}`,
+        `https://pharmeasylion.herokuapp.com/api/user/verify/${user_id}`,
         { otp: Number(otp) }
       );
       if (res.data === "your otp has been verified!") {

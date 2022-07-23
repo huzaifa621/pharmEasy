@@ -72,7 +72,7 @@ const Desc = () => {
   //slider req
   const getData2 = () => {
     axios
-      .get(`http://localhost:8080/api/product?q=${detail2}`)
+      .get(`https://pharmeasylion.herokuapp.com/api/product?q=${detail2}`)
       .then(({ data }) => {
         setSlider(data);
       });
@@ -81,7 +81,7 @@ const Desc = () => {
   //req for desc page
   const getData = () => {
     axios
-      .get(`http://localhost:8080/api/product/single/${title}`)
+      .get(`https://pharmeasylion.herokuapp.com/api/product/single/${title}`)
       .then(({ data }) => {
         setDesdata(data);
       });
@@ -99,11 +99,14 @@ const Desc = () => {
   var UserId = localStorage.getItem("user_id");
 
   const handleAddToCart = async () => {
-    const res = await axios.post("http://localhost:8080/api/cart", {
-      productId: product_id,
-      qty: Number(val),
-      user_id: UserId,
-    });
+    const res = await axios.post(
+      "https://pharmeasylion.herokuapp.com/api/cart",
+      {
+        productId: product_id,
+        qty: Number(val),
+        user_id: UserId,
+      }
+    );
   };
 
   //slider add to cart

@@ -23,12 +23,13 @@ const Product = () => {
 
   useEffect(() => {
     const getData = async () => {
-      let res = await axios.get(`http://localhost:8080/api/product?q=${str}`);
+      let res = await axios.get(
+        `https://pharmeasylion.herokuapp.com/api/product?q=${str}`
+      );
       setData(res.data);
     };
     getData();
   }, [str]);
- 
 
   const handleFilter = async (val) => {
     if (val === "price-asc") {
