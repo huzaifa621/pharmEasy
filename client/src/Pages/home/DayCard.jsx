@@ -1,9 +1,17 @@
+import { useNavigate } from "react-router-dom";
 import styles from "../../Styles/home/dealsOfDay.module.css";
 
 const DayCard = ({ props }) => {
   const { img, title, discount, strike, price } = props;
+  const navigate = useNavigate();
   return (
-    <div className={styles.card}>
+    <div
+      onClick={() => {
+        navigate(`/productdetails/${title}`);
+        localStorage.setItem("frequently", JSON.stringify("Covid Essentials"));
+      }}
+      className={styles.card}
+    >
       <div>
         <div className={styles.discount}>{discount}</div>
         <div
