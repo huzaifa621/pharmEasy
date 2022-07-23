@@ -4,7 +4,7 @@ const productModel = require("../models/product");
 
 const getOrdered = async (req, res) => {
   const { id } = req.params;
-  console.log("id:", id);
+  
   try {
     const data = await orderModel.findOne({ user_id: id }).populate({
       path: "orderedProduct",

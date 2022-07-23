@@ -9,6 +9,8 @@ const orderSchema = new Schema(
   },
   {
     timestamps: true,
+    // CreatedAt:{ type: Date, required: true, default: Date.now },
+    // UpdatedAt:{ type: Date, required: true, default: Date.now },
   }
 );
 

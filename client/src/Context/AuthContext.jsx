@@ -4,6 +4,8 @@ const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [authState, setAuthState] = useState(false);
+  const [formData, setFormData] = useState({});
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     const logIn = localStorage.getItem("logIn");
@@ -13,7 +15,16 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ authState, setAuthState }}>
+    <AuthContext.Provider
+      value={{
+        authState,
+        setAuthState,
+        formData,
+        setFormData,
+        total,
+        setTotal,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

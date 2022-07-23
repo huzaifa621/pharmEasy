@@ -39,15 +39,12 @@ import { FiMail } from "react-icons/fi";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthContext";
+import { useEffect } from "react";
 
 const options = [
   {
     value: "Ecosprin 75mg Strip Of 14 Tablets",
     label: "Ecosprin 75mg Strip Of 14 Tablets",
-  },
-  {
-    value: "Dolo 650mg Stip Of 15 Tablets",
-    label: "Dolo 650mg Stip Of 15 Tablets",
   },
   {
     value: "Evion 400mg Strip of 10 Capsules",
@@ -62,17 +59,74 @@ const options = [
     label: "Pharmeasy Multivitamin",
   },
   {
-    value: "Dolo 650mg Stip Of 15 Tablets",
-    label: "Dolo 650mg Stip Of 15 Tablets",
-  },
-  {
     value: "Ecosprin 75mg Strip Of 14 Tablets",
     label: "Ecosprin 75mg Strip Of 14 Tablets",
   },
   { value: "Pharmeasy Multivitamin", label: "Pharmeasy Multivitamin" },
   {
+    value: "Grd Chocolate Whey Protein Refill Of 400 G",
+    label: "Grd Chocolate Whey Protein Refill Of 400 G",
+  },
+
+  {
+    value: "Evion 400mg Strip Of 10 Capsules",
+    label: "Evion 400mg Strip Of 10 Capsules",
+  },
+  {
+    value: "Neurobion Forte Tablet 30'S",
+    label: "Neurobion Forte Tablet 30'S",
+  },
+  {
+    value: "Supradyn Daily Multivitamin Tablets 15s",
+    label: "Supradyn Daily Multivitamin Tablets 15s",
+  },
+  {
+    value: "Pharmeasy Multivitamin",
+    label: "Pharmeasy Multivitamin",
+  },
+  {
+    value: "Calcimax Forte Plus Strip Of 30 Tablets",
+    label: "Calcimax Forte Plus Strip Of 30 Tablets",
+  },
+  { value: "Pharmeasy Multivitamin", label: "Pharmeasy Multivitamin" },
+  {
     value: "Ecosprin 75mg Strip Of 14 Tablets",
     label: "Ecosprin 75mg Strip Of 14 Tablets",
+  },
+
+  {
+    value:
+      "Liveasy Foods Healthy Seed Mix - Blend Of 6 Fibre Rich Healthy Seeds - 200 Gms",
+    label:
+      "Liveasy Foods Healthy Seed Mix - Blend Of 6 Fibre Rich Healthy Seeds - 200 Gms",
+  },
+  {
+    value: "Lizol Floral Disinfectant Floor Cleaner Liquid Bottle Of 200 Ml",
+    label: "Lizol Floral Disinfectant Floor Cleaner Liquid Bottle Of 200 Ml",
+  },
+  {
+    value: "Harpic Lemon Bathroom Cleaner Bottle Of 500 Ml",
+    label: "Harpic Lemon Bathroom Cleaner Bottle Of 500 Ml",
+  },
+  {
+    value: "Domex Disinfectant Expert Toilet Cleaner - 500 Ml",
+    label: "Domex Disinfectant Expert Toilet Cleaner - 500 Ml",
+  },
+  {
+    value: "Luxor Nano Mobile Disinfectant Cleaner - 10ml On-The-Go",
+    label: "Luxor Nano Mobile Disinfectant Cleaner - 10ml On-The-Go",
+  },
+  {
+    value:
+      "Tri-Activ Disinfectant Spray For Multi-Surfaces 70% Alcohol Based - 100ml",
+    label:
+      "Tri-Activ Disinfectant Spray For Multi-Surfaces 70% Alcohol Based - 100ml",
+  },
+  {
+    value:
+      "Ezee Bio-Degradable Large Garbage Bags (24 X 32 Inches) Packet Of 15",
+    label:
+      "Ezee Bio-Degradable Large Garbage Bags (24 X 32 Inches) Packet Of 15",
   },
 ];
 
@@ -119,6 +173,18 @@ const Navbar = () => {
   const toast = useToast();
   const value = useContext(AuthContext);
   const navigate = useNavigate();
+
+  const handleChange = (values) => {
+    setVal(values);
+  };
+
+  var details = val.value;
+
+  useEffect(() => {
+    if (details) {
+      navigate(`/productdetails/${details}`);
+    }
+  }, [details]);
 
   const sendMail = async (mail) => {
     setLoading(true);
@@ -187,21 +253,16 @@ const Navbar = () => {
         <div>
           <InputGroup size="lg" width={"75%"}>
             <InputLeftAddon children={<SelectPin />} />
-            {/* <Input
-              placeholder="Seach medicines/Healthcare product"
-              bg={"white"}
-              color={"black"}
-            /> */}
+
             <div
               style={{ width: "40rem", height: "3rem", objectFit: "contain" }}
             >
               <Select
-                onChange={(values) => setVal(values)}
+                onChange={handleChange}
                 placeholder="Search medicines/Healthcare products"
-                // width="200px"
-                // height="3rem"
-                color={"black"}
+                svg=""
                 options={options}
+                color={"black"}
                 styles={customStyles}
               />
             </div>
@@ -229,7 +290,7 @@ const Navbar = () => {
                 style={{ marginTop: "0.2rem", marginRight: "0.4rem" }}
                 size="23px"
               />
-              <a href="">Offers</a>
+              <p style={{ color: "white" }}>Offers</p>
             </Flex>
             <Flex>
               <RiUser5Fill
@@ -247,25 +308,53 @@ const Navbar = () => {
                 {value.authState ? (
                   <>
                     <MenuList>
-                      <MenuItem color="black" _hover={{ color: "teal.500" }}>
+                      <MenuItem
+                        onClick={() => navigate("/myorders")}
+                        color="black"
+                        _hover={{ color: "teal.500" }}
+                      >
                         My Orders
                       </MenuItem>
-                      <MenuItem color="black" _hover={{ color: "teal.500" }}>
+                      <MenuItem
+                        onClick={() => navigate("/myrefills")}
+                        color="black"
+                        _hover={{ color: "teal.500" }}
+                      >
                         My Refills
                       </MenuItem>
-                      <MenuItem color="black" _hover={{ color: "teal.500" }}>
+                      <MenuItem
+                        onClick={() => navigate("/medicalrecord")}
+                        color="black"
+                        _hover={{ color: "teal.500" }}
+                      >
                         Medical Records
                       </MenuItem>
-                      <MenuItem color="black" _hover={{ color: "teal.500" }}>
+                      <MenuItem
+                        onClick={() => navigate("/myprofile")}
+                        color="black"
+                        _hover={{ color: "teal.500" }}
+                      >
                         My Profile
                       </MenuItem>
-                      <MenuItem color="black" _hover={{ color: "teal.500" }}>
+                      <MenuItem
+                        onClick={() => navigate("/wallet")}
+                        color="black"
+                        _hover={{ color: "teal.500" }}
+                      >
                         Wallet
                       </MenuItem>
-                      <MenuItem color="black" _hover={{ color: "teal.500" }}>
+                      <MenuItem
+                        onClick={() => navigate("/refer")}
+                        color="black"
+                        _hover={{ color: "teal.500" }}
+                      >
                         Refer & Earn
                       </MenuItem>
-                      <MenuItem color="black" _hover={{ color: "teal.500" }}>
+                      <MenuItem
+                        onClick={() => navigate("/")}
+                        color="black"
+                        _hover={{ color: "teal.500" }}
+                      >
                         Notification
                       </MenuItem>
                       <MenuItem
@@ -401,7 +490,7 @@ const Navbar = () => {
                 style={{ marginTop: "0.2rem", marginRight: "0.4rem" }}
                 size="23px"
               />
-              <a href="">Cart</a>
+              <Link to="/cart">Cart</Link>
             </Flex>
           </Flex>
         </div>
