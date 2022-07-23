@@ -60,8 +60,10 @@ const Myorders = () => {
   // console.log(list,"list")
   // console.log(orderId)
   let total = 0;
-  for (let el of list) {
-    total += el.product.mrp * el.qty;
+  if (orderlist) {
+    for (let el of list) {
+      total += el.product.mrp * el.qty;
+    }
   }
 
   // var total = localStorage.getItem("total");
