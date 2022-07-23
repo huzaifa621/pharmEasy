@@ -1,9 +1,7 @@
 import { Heading } from "@chakra-ui/layout";
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
-// import { Spinner } from "react-bootstrap";
-// import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import styles from "./Thankyou.module.css";
@@ -14,9 +12,7 @@ const ThankYou = () => {
   useEffect(() => {
     const moveToOrder = async () => {
       const user_id = localStorage.getItem("user_id");
-      const res = await axios.get(
-        `http://localhost:8080/api/cart/payment/${user_id}`
-      );
+      await axios.get(`http://localhost:8080/api/cart/payment/${user_id}`);
     };
     moveToOrder();
   }, []);

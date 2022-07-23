@@ -1,5 +1,5 @@
 // import "./App.css";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import axios from "axios";
 import { AuthContext } from "../../Context/AuthContext";
 
@@ -55,21 +55,7 @@ function Payment() {
       console.log(error);
     }
   };
-  return (
-    <div className="App">
-      {/* <div className="book_container">
-        <img src={book.img} alt="book_img" className="book_img" />
-        <p className="book_name">{book.name}</p>
-        <p className="book_author">By {book.author}</p>
-        <p className="book_price">
-          Price : <span>&#x20B9; {book.price}</span>
-        </p>
-        <button onClick={handlePayment} className="buy_btn">
-          buy now
-        </button>
-      </div> */}
-    </div>
-  );
+  return <div className="App"></div>;
 }
 
 export default Payment;

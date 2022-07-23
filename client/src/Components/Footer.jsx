@@ -4,6 +4,7 @@ import instagram from "./assets/instagram.png";
 import twitter from "./assets/twitter.png";
 import youtube from "./assets/youtube.png";
 import { Heading } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -15,19 +16,19 @@ const Footer = () => {
               <h4>Company</h4>
             </Heading>
             <div>
-              <a href="">About Us</a>
+              <Link to="/">About Us</Link>
             </div>
             <div>
-              <a href="">Careers</a>
+              <Link to="/">Careers</Link>
             </div>
             <div>
-              <a href="">Blog</a>
+              <Link to="/">Blog</Link>
             </div>
             <div>
-              <a href="">Partner with PharmEasy</a>
+              <Link to="/">Partner with PharmEasy</Link>
             </div>
             <div>
-              <a href="">Sell at PharmEasy</a>
+              <Link to="/">Sell at PharmEasy</Link>
             </div>
           </div>
           <div>
@@ -36,16 +37,16 @@ const Footer = () => {
             </Heading>
 
             <div>
-              <a href="">Order Medicine</a>
+              <Link to="/">Order Medicine</Link>
             </div>
             <div>
-              <a href="">Healthcare Products</a>
+              <Link to="/">Healthcare Products</Link>
             </div>
             <div>
-              <a href="">Lab Tests</a>
+              <Link to="/">Lab Tests</Link>
             </div>
             <div>
-              <a href="">Find Nearest Collection Centre</a>
+              <Link to="/">Find Nearest Collection Centre</Link>
             </div>
           </div>
         </div>
@@ -56,49 +57,49 @@ const Footer = () => {
           </Heading>
 
           <div>
-            <a href="">Covid Essentials</a>
+            <Link to="">Covid Essentials</Link>
           </div>
           <div>
-            <a href="">Health Food and Drinks</a>
+            <Link to="">Health Food and Drinks</Link>
           </div>
           <div>
-            <a href="">Beauty</a>
+            <Link to="">Beauty</Link>
           </div>
           <div>
-            <a href="">Skin Care</a>
+            <Link to="">Skin Care</Link>
           </div>
           <div>
-            <a href="">Home Care</a>
+            <Link to="">Home Care</Link>
           </div>
           <div>
-            <a href="">Ayurvedic Care</a>
+            <Link to="">Ayurvedic Care</Link>
           </div>
           <div>
-            <a href="">Sexual Wellness</a>
+            <Link to="">Sexual Wellness</Link>
           </div>
           <div>
-            <a href="">Fitness & Supplements</a>
+            <Link to="">Fitness & Supplements</Link>
           </div>
           <div>
-            <a href="">Mother and Baby Care</a>
+            <Link to="">Mother and Baby Care</Link>
           </div>
           <div>
-            <a href="">Healthcare Devices</a>
+            <Link to="">Healthcare Devices</Link>
           </div>
           <div>
-            <a href="">Health Condition</a>
+            <Link to="">Health Condition</Link>
           </div>
           <div>
-            <a href="">Diabetic Care</a>
+            <Link to="">Diabetic Care</Link>
           </div>
           <div>
-            <a href="">Elderly Care</a>
+            <Link to="">Elderly Care</Link>
           </div>
           <div>
-            <a href="">Accessories And Wearables</a>
+            <Link to="">Accessories And Wearables</Link>
           </div>
           <div>
-            <a href="">Value Store</a>
+            <Link to="">Value Store</Link>
           </div>
         </div>
 
@@ -109,19 +110,19 @@ const Footer = () => {
             </Heading>
 
             <div>
-              <a href="">Browse All Medicines</a>
+              <Link to="">Browse All Medicines</Link>
             </div>
             <div>
-              <a href="">Browse All Molecules</a>
+              <Link to="">Browse All Molecules</Link>
             </div>
             <div>
-              <a href="">Browse All Cities & Areas</a>
+              <Link to="">Browse All Cities & Areas</Link>
             </div>
             <div>
-              <a href="">Browse All Stores</a>
+              <Link to="">Browse All Stores</Link>
             </div>
             <div>
-              <a href="">FAQs</a>
+              <Link to="">FAQs</Link>
             </div>
           </div>
           <div>
@@ -130,22 +131,22 @@ const Footer = () => {
             </Heading>
 
             <div>
-              <a href="">Editorial Policy</a>
+              <Link to="">Editorial Policy</Link>
             </div>
             <div>
-              <a href="">Privacy Policy</a>
+              <Link to="">Privacy Policy</Link>
             </div>
             <div>
-              <a href="">Vulnerability Disclosure Policy</a>
+              <Link to="">Vulnerability Disclosure Policy</Link>
             </div>
             <div>
-              <a href="">Terms and Conditions</a>
+              <Link to="">Terms and Conditions</Link>
             </div>
             <div>
-              <a href="">Customer Support Policy</a>
+              <Link to="">Customer Support Policy</Link>
             </div>
             <div>
-              <a href="">Return Policy</a>
+              <Link to="">Return Policy</Link>
             </div>
           </div>
         </div>
@@ -157,27 +158,30 @@ const Footer = () => {
 
           <div className={styles.social_media}>
             <div>
-              <a href="https://www.instagram.com/pharmeasyapp/" target="_blank">
+              <Link
+                to="https://www.instagram.com/pharmeasyapp/"
+                target="_blank"
+              >
                 <img src={instagram} alt="" />
-              </a>
+              </Link>
             </div>
             <div>
-              <a href="https://www.facebook.com/pharmeasy/" target="_blank">
+              <Link to="https://www.facebook.com/pharmeasy/" target="_blank">
                 <img src={facebook} alt="" />
-              </a>
+              </Link>
             </div>
             <div>
-              <a
-                href="https://www.youtube.com/channel/UCDats_DLX-bGZH3-KGu8JhA"
+              <Link
+                to="https://www.youtube.com/channel/UCDats_DLX-bGZH3-KGu8JhA"
                 target="_blank"
               >
                 <img src={youtube} alt="" />
-              </a>
+              </Link>
             </div>
             <div>
-              <a href="https://www.twitter.com/pharmeasyapp/" target="_blank">
+              <Link to="https://www.twitter.com/pharmeasyapp/" target="_blank">
                 <img src={twitter} alt="" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>

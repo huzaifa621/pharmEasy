@@ -28,8 +28,7 @@ const Product = () => {
     };
     getData();
   }, [str]);
-  // console.log(data);
-  console.log(type);
+ 
 
   const handleFilter = async (val) => {
     if (val === "price-asc") {
