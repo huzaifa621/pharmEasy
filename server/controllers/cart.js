@@ -14,14 +14,20 @@ const addCart = async (req, res) => {
       if (isProduct) {
         const updateProductQty = await cartObjectModel.updateOne(
           { product: productId, user_id: user_id },
-          { $set: { qty: isProduct.qty + 1 } }
+          { $set: { qty: isProduct.qty + qty } }
         );
         const oldCartUser = await cartModel.findOne({ user_id: user_id });
         if (oldCartUser) {
-          const updateCartUser = await cartModel.updateOne(
-            { user_id: user_id },
-            { $push: { cartProduct: isProduct._id } }
-          );
+          const productExists = await cartModel.findOne({
+            user_id: user_id,
+            cartProduct: { $in: [isProduct._id] },
+          });
+          if (!productExists) {
+            const updateCartUser = await cartModel.updateOne(
+              { user_id: user_id },
+              { $push: { cartProduct: isProduct._id } }
+            );
+          }
           return res.send("product successfully added into cart");
         }
         return res.send("product already added into cart");

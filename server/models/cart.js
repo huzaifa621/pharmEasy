@@ -4,7 +4,9 @@ const cartObjectModel = require("./cartObject");
 const cartSchema = new Schema(
   {
     user_id: { type: Schema.Types.ObjectId, ref: userModel },
-    cartProduct: [{ type: Schema.Types.ObjectId, ref: cartObjectModel }],
+    cartProduct: [
+      { type: Schema.Types.ObjectId, ref: cartObjectModel, unique: true },
+    ],
   },
   {
     timestamps: true,
