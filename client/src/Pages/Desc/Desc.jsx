@@ -93,7 +93,7 @@ const Desc = () => {
   };
   var product_id = desData._id;
   var Qty = val;
-  var UserId = "62d7ce9fc8c9b354e8c3705b";
+  var UserId = localStorage.getItem("user_id")
 
   // console.log(Qty,"qty")
 
@@ -103,8 +103,8 @@ const Desc = () => {
     console.log(product_id, Qty, UserId, "cart");
     const res = await axios.post("http://localhost:8080/api/cart", {
       productId: product_id,
-      qty: 1,
-      user_id: "62d7ce9fc8c9b354e8c3705b",
+      qty: Number(val),
+      user_id: UserId,
     });
     console.log(res.data);
   };
@@ -112,7 +112,7 @@ const Desc = () => {
   const handleAddToCartS = (el) => {
     // var product_idS = el._id
 
-    console.log(el, "slider");
+    // console.log(el, "slider");
 
     // console.log(product_idS,Qty,UserId,"slider")
     // axios.post("/",{
@@ -122,7 +122,7 @@ const Desc = () => {
     // })
   };
   const handleClick3 = () => {
-    console.log("cart");
+   
     navigate("/cart");
   };
   // console.log((Number(desData.mrp)),Number(desData.strike))
@@ -135,6 +135,8 @@ const Desc = () => {
     (Number(desData.mrp) / Number(desData.strike)) * 100
   ).toFixed(2);
   // console.log(offer,"offer")
+
+  let cartQty = localStorage.getItem("qty")
 
   var settings = {
     dots: false,
@@ -247,7 +249,7 @@ const Desc = () => {
           </div>
 
           <div className={styles.main_div4}>
-            <p style={{ fontWeight: "bold" }}>Items in Cart</p>
+            <p style={{ fontWeight: "bold" }}>{cartQty+Number(Qty)} Items in Cart</p>
 
             <Stack
               spacing={4}
@@ -457,4 +459,4 @@ const Desc = () => {
 
 export default Desc;
 
-//http://localhost:8080/api/cart/:user_id //get request
+

@@ -1,13 +1,13 @@
-
 .div{
-    width: 80%;
+    /* width: 80%; */
     /* border: 1px solid blue; */
     height: auto;
     margin: auto;
     font-family: sans-serif;
+    margin-top: 3rem;
 }
 .main{
-    
+    width: 80%;
     margin: auto;
     display: flex;
     justify-content: space-between;
@@ -15,6 +15,7 @@
 .cart_div{
     display: flex;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    width: 110vh;
 }
 .cart_div>div>img{
     box-sizing: border-box;
@@ -27,6 +28,34 @@
 }
 .left{
     width: 120vh;
+}
+.div2>div>p{
+    width: 40vh;
+}
+.deleteIcon{
+    width: 4vh;
+    height: 4vh;
+}
+.deleteIcon:hover{
+    width: 5vh;
+    height: 5vh;
+}
+.QtyBtn{
+    width: 15vh;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 0.5rem;
+    font-weight: bold;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+.orderSum{
+    margin-top: 3rem;
+}
+.orderSum>p{
+    font-weight: bold;
+    margin-bottom: 1rem;
 }
 
 
@@ -126,14 +155,16 @@ h1,p,h4{
     display: flex;
     margin-top: 2rem;
     padding: 6rem;
-    gap:40px;
+    justify-content: space-between;
+    /* border: 1px solid red; */
     border: 1px solid rgb(236, 232, 232);
-
+    width: 100%;
 }
 .bottom_2{
     display: flex;
     margin-top: 5rem;
-    gap:70px
+    gap:70px;
+    margin-left: 10rem;
 
 }
 .bottom_21>img{

@@ -90,14 +90,17 @@ h1,p,h4{
     display: flex;
     margin-top: 2rem;
     padding: 6rem;
-    gap:40px;
+    justify-content: space-around;
     border: 1px solid rgb(236, 232, 232);
+    /* border: 1px solid green; */
+    width: 100%;
 
 }
 .bottom_2{
     display: flex;
     margin-top: 5rem;
-    gap:70px
+    gap:70px;
+    margin-left: 10rem;
 
 }
 .bottom_21>img{
