@@ -138,6 +138,8 @@ const Cart = () => {
   // console.log(cartdata.cartProduct,"product")
   var Cart = cartdata.cartProduct
 
+  console.log(Cart,"cart")
+
   // console.log(cartdata.cartProduct[0].product)
   
   if(Cart==undefined)
@@ -151,19 +153,23 @@ const Cart = () => {
     console.log(Cart)
     // console.log(Length,"length")
 
-    let total = 0
-    let totalStrike = 0
+    let Total = 0
+    let TotalStrike = 0
 
     let sum = 0
     for(let i=0; i<Cart.length; i++)
     {
       sum=sum+Cart[i].qty
-      total=total+Cart[i].product.mrp
-      totalStrike=totalStrike+Cart[i].product.strike
+      Total=Total+(Cart[i].product.mrp*Cart[i].qty)
+      TotalStrike=TotalStrike+(Cart[i].product.strike*Cart[i].qty)
     }
-    console.log(sum,"sumQty")
-    console.log(total,totalStrike,"total")
-    let saving = totalStrike-total
+    // console.log(sum,"sumQty")
+    // console.log(total,totalStrike,"total")
+    let total = Total.toFixed(2)
+    console.log(total,"total")
+    let totalStrike = TotalStrike.toFixed(2)
+    let saving = (totalStrike-total).toFixed(2)
+    let discount = (100-((total/totalStrike)*100)).toFixed(2)
     localStorage.setItem("qty",sum)
 
 
@@ -177,7 +183,7 @@ const Cart = () => {
         <div className={styles.left}>
           <div>
             <Heading as="h1" fontSize="30px">
-              {Length} Items In Cart,qty-{sum}
+            {sum} Items In Cart
             </Heading>
 
             {Cart.map((el) => {
@@ -354,21 +360,58 @@ const Cart = () => {
             </Button>
             </div>
 
-            <div className={styles.orderSum} >
+            <div className={styles.orderSum}>
               <p >Order Summary</p>
             </div>
            
-              <p>Cart Value </p>
-              <p>{totalStrike}</p>
-
-              <p>Amount to be paid</p>
-              <p>{total}</p>
-
-              <p>{saving}</p>
-           
-            <div>
-
+                <div className={styles.orderFlex}>
+                  <p>Cart Value </p>
+                  <p  style={{
+                  textDecorationLine: "line-through",
+                  textDecorationStyle: "solid",
+                }}> {"\u20B9"} {totalStrike}</p>
+                </div>
+              
+                <div className={styles.orderFlex}>
+                  <p>Amount to be paid</p>
+                  <p> {"\u20B9"} {total}</p>
+                </div>
+              
+              <div className={styles.saving}>
+                <div>{"\u20B9"}</div>
+                <div>
+                <p>Total savings of {"\u20B9"} {saving} on this order
+                <br/>MRP Discount {  discount } %</p>
+                </div>
+              </div>
+              
+            <div className={styles.more}>
+              <div className={styles.more1}>
+                <div>
+                    <p>Save {"\u20B9"}200.00 more on <br/> this order</p>
+                </div>
+                <div>
+                    <img src="https://assets.pharmeasy.in/web-assets/dist/f1f4bdf9.svg" alt=""/>
+                </div> 
+              </div>
+              <div>
+                <li> %5 cashback on all medicine & healthcare orders</li>
+                <li> 10% cashback on all diagnostics orders</li>
+                <li>FREE delivery on orders</li>
+                <li>ZERO convenience charge</li>
+                <p style={{display:"flex",color:"white",marginTop:"1rem"}}>
+                  View More Benefits <IoIosArrowForward 
+                style={{ marginLeft:"0.5rem",width:"4vh",marginTop:'0.2rem' }}/>
+                </p>
+              </div>
             </div>
+
+            <div className={styles.pack}>
+                <img src="https://assets.pharmeasy.in/web-assets/dist/0c22e009.svg?dim=0x32&dpr=1&q=100" alt=""/>
+                <p>Products will be safely packed & Sanitized. <br/> Pay 
+                online for contactless delivery</p>
+            </div>
+
         
         </div>
       </div>
