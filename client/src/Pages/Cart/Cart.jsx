@@ -68,22 +68,6 @@ function PrevArrow(props) {
   );
 }
 
-// var cart = [
-//   {
-//     title:
-//       "Everherb (By Pharmeasy) Flaxseed Omega 3 - Essential Fatty Acids - Healthy Heart - Bottle Of 60",
-//     img1: "https://cdn01.pharmeasy.in/dam/products_otc/D64484/everherb-by-pharmeasy-flaxseed-omega-3-essential-fatty-acids-healthy-heart-bottle-of-60-2-1654165285.jpg?dim=320x320&dpr=1&q=100",
-//     mrp: 100,
-//     strike: 120,
-//   },
-//   {
-//     title:
-//       "Liveasy Wellness Calcium, Magnesium, Vitamin D3 & Zinc - Bones & Dental Health - Bottle 60 Tabs",
-//     img1: "https://cdn01.pharmeasy.in/dam/products_otc/T22634/liveasy-wellness-calcium-magnesium-vitamin-d3-zinc-bones-dental-health-bottle-60-tabs-2-1654233851.jpg?dim=320x320&dpr=1&q=100",
-//     mrp: 200,
-//     strike: 240,
-//   },
-// ];
 
 const Cart = () => {
   const [slider, setSlider] = useState([]);
@@ -159,7 +143,9 @@ const Cart = () => {
   if (Cart == undefined) {
     return (
       <>
-        <p>Cart Empty</p>
+        <div style={{margin:"auto",width:"90vh"}}>
+        <img src="https://www.eyecatchers.in/shop-online/images/cart-empty.jpg" alt=""/>
+        </div>
       </>
     );
   } else {
@@ -181,7 +167,7 @@ const Cart = () => {
     let totalStrike = TotalStrike.toFixed(2);
     let saving = (totalStrike - total).toFixed(2);
     let discount = (100 - (total / totalStrike) * 100).toFixed(2);
-    localStorage.setItem("qty", sum);
+    localStorage.setItem("total", total);
 
     return (
       <>
@@ -291,45 +277,6 @@ const Cart = () => {
                           <div className={styles.QtyBtn}>
                             <p>Qty {el.qty}</p>
                           </div>
-
-                          {/* <Select
-                        onClick={changeQty}
-                        width="20vh"
-                        marginBottom="2rem"
-                        onChange={(e) => setVal(e.target.value)}
-                        placeholder="Qty"
-                      >
-                        <option style={{ color: "black" }} value="1">
-                          1
-                        </option>
-                        <option style={{ color: "black" }} value="2">
-                          2
-                        </option>
-                        <option style={{ color: "black" }} value="3">
-                          3
-                        </option>
-                        <option style={{ color: "black" }} value="4">
-                          4
-                        </option>
-                        <option style={{ color: "black" }} value="5">
-                          5
-                        </option>
-                        <option style={{ color: "black" }} value="6">
-                          6
-                        </option>
-                        <option style={{ color: "black" }} value="7">
-                          7
-                        </option>
-                        <option style={{ color: "black" }} value="8">
-                          8
-                        </option>
-                        <option style={{ color: "black" }} value="9">
-                          9
-                        </option>
-                        <option style={{ color: "black" }} value="10">
-                          10
-                        </option>
-                      </Select> */}
                           <p>Delivery by Tomorrow, before 10:00pm</p>
                         </div>
                       </div>
