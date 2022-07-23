@@ -1,12 +1,11 @@
 .container {
   display: flex;
   background-color: #a291fa;
-  align-items: center;
   gap: 8%;
   box-sizing: border-box;
   padding: 0px 2%;
   margin: 0px 16px;
-  margin-top: 50px;
+  margin-top: 80px;
   border-radius: 5px;
   height: 100px;
 }
@@ -17,4 +16,5 @@
   font-size: 18px;
   font-weight: bold;
   color: white;
+  margin-top: 26px;
 }

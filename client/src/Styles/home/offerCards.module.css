@@ -33,10 +33,12 @@
 }
 
 .discount {
-  background-color: #f37778;
+  background-image: url("https://assets.pharmeasy.in/web-assets/_next/icons/pdp-discount.png");
+  background-repeat: no-repeat;
+  background-size: 100% 30px;
   font-size: 12px;
   padding: 6px;
   color: white;
   font-weight: bold;
-  width: 40%;
+  width: 45%;
 }

@@ -13,7 +13,7 @@ import {
   UnorderedList,
   Divider,
 } from "@chakra-ui/react";
-import axios from "axios";
+
 import { useNavigate } from "react-router-dom";
 
 const Healthcare = ({ slides }) => {
@@ -27,11 +27,7 @@ const Healthcare = ({ slides }) => {
   const prevSlide = () => {
     setCurrent(current === 0 ? length - 1 : current - 1);
   };
-  // const getData = async (str) => {
-  //   const res = await axios.get(`http://localhost:8080/api/product/?q=${str}`);
-  //   const data = res.data;
-  //   console.log(data);
-  // };
+  
 
   return (
     <>
@@ -334,7 +330,7 @@ const Healthcare = ({ slides }) => {
             borderRadius="11"
             boxShadow="md"
             _hover={{ borderColor: "skyblue", borderWidth: "5px" }}
-            onClick={() => navigate("/products/Healthcare Devices")}
+            onClick={() => navigate("/products/Health Food and Drinks")}
           >
             <Image
               src="https://cdn01.pharmeasy.in/dam/discovery/categoryImages/e17c6d96de443b65988f5b2366b6ebb1.png"
@@ -361,7 +357,7 @@ const Healthcare = ({ slides }) => {
             borderRadius="11"
             boxShadow="md"
             _hover={{ borderColor: "skyblue", borderWidth: "5px" }}
-            onClick={() => navigate("/products/Health Condition")}
+            onClick={() => navigate("/products/Covid Essentials")}
           >
             <Image
               src="https://cdn01.pharmeasy.in/dam/discovery/categoryImages/14bac4e33b11338299d8d6c1d905ca8f.png"
@@ -388,7 +384,7 @@ const Healthcare = ({ slides }) => {
             borderRadius="11"
             boxShadow="md"
             _hover={{ borderColor: "skyblue", borderWidth: "5px" }}
-            onClick={() => navigate("/products/Diabetic Care")}
+            onClick={() => navigate("/products/Health Food and Drinks")}
           >
             <Image
               src="https://cdn01.pharmeasy.in/dam/discovery/categoryImages/ec716b08ac643f88971944792e2c5549.png"
@@ -415,7 +411,7 @@ const Healthcare = ({ slides }) => {
             borderRadius="11"
             boxShadow="md"
             _hover={{ borderColor: "skyblue", borderWidth: "5px" }}
-            onClick={() => navigate("/products/Elderly Care")}
+            onClick={() => navigate("/products/Skin Care")}
           >
             <Image
               src="https://cdn01.pharmeasy.in/dam/discovery/categoryImages/292b08b6deab3ba9bd76d3a6ed4d71e0.png"
@@ -442,7 +438,7 @@ const Healthcare = ({ slides }) => {
             borderRadius="11"
             boxShadow="md"
             _hover={{ borderColor: "skyblue", borderWidth: "5px" }}
-            onClick={() => navigate("/products/Accessories And Weareables")}
+            onClick={() => navigate("/products/Ayurvedic Care")}
           >
             <Image
               src="https://cdn01.pharmeasy.in/dam/discovery/categoryImages/236fc993bd00381fb7061ee2333ad0e3.png"
@@ -469,7 +465,11 @@ const Healthcare = ({ slides }) => {
             borderRadius="11"
             boxShadow="md"
             _hover={{ borderColor: "skyblue", borderWidth: "5px" }}
-            onClick={() => navigate("/products/Personal Care")}
+
+            
+
+            onClick={() => navigate("/products/Beauty")}
+
           >
             <Image
               src="https://cdn01.pharmeasy.in/dam/discovery/categoryImages/7967589fcc513f348de4c1069c04ea38.png"

@@ -1,5 +1,7 @@
+import { AppDownload } from "./AppDownload";
 import { ChooseUs } from "./ChooseUs";
 import { Customer } from "./Customer";
+import { DealsOfDay } from "./DealsOfDay";
 import { FeaturedBrand } from "./FeaturedBrand";
 import { HealthArticles } from "./HealthArticles";
 import { JustOffer } from "./JustOffer";
@@ -18,9 +20,11 @@ const Main = () => {
       <JustOffer />
       <LabTest />
       <FeaturedBrand />
+      <DealsOfDay />
       <HealthArticles />
       <ChooseUs />
       <Customer />
+      <AppDownload />
       <QAns />
     </>
   );

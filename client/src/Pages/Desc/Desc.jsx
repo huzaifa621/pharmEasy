@@ -54,177 +54,71 @@ function PrevArrow(props) {
 }
 
 const Desc = () => {
-
   const [desData, setDesdata] = useState([]);
   const [slider, setSlider] = useState([]);
   const [qty, setQty] = useState(0);
   const [val, setVal] = useState("");
   const navigate = useNavigate();
-  const[cartdata,setCartdata] = useState([])
+  const [cartdata, setCartdata] = useState([]);
   const detail = JSON.parse(localStorage.getItem("productDetails"));
   const detail2 = JSON.parse(localStorage.getItem("frequently"));
   const { title } = useParams();
 
-  // console.log(desData,"detail")
-
   useEffect(() => {
-    
     getData();
     getData2();
-    
-  }, []);
-
-
-
+  }, [title]);
 
   //slider req
   const getData2 = () => {
     axios
       .get(`http://localhost:8080/api/product?q=${detail2}`)
       .then(({ data }) => {
-        // console.log(data,"data")
         setSlider(data);
       });
   };
-
-
 
   //req for desc page
   const getData = () => {
     axios
       .get(`http://localhost:8080/api/product/single/${title}`)
       .then(({ data }) => {
-        // console.log(data,"data1")
         setDesdata(data);
       });
   };
 
+  const [state, setState] = useState(false);
 
-  const[state,setState] = useState(false)
-  // var state = false
-  //smaller img
-  const handleClick1 = (e) => {
-    console.log(desData.img1);
-    desData.img1 = desData.img1;
-    setState(true)
+  const handleClick1 = (e) => {};
+  const handleClick2 = () => {};
+  const handleClick3 = () => {};
 
-    // console.log(state,"state")
-    // console.log(detail);
-    
-  };
-  const handleClick2 = () => {
-    console.log(desData.img1);
-    desData.img1 = desData.img2;
-    // console.log(detail);
-    setState(true)
-    
-  };
-  const handleClick3 = () => {
-    console.log(desData.img1);
-    desData.img1 = desData.img3;
-    // console.log(detail);
-    setState(true)
-   
-  };
-
-
-
-
- //main add to cart
+  //main add to cart
   var product_id = desData._id;
   var Qty = val;
   var UserId = localStorage.getItem("user_id");
 
- 
   const handleAddToCart = async () => {
-    console.log(product_id, Qty, UserId, "cart");
     const res = await axios.post("http://localhost:8080/api/cart", {
       productId: product_id,
       qty: Number(val),
       user_id: UserId,
     });
-    // console.log(res.data);
   };
-
-
-
 
   //slider add to cart
-  const handleAddToCartS = async(el) => {
-    // var product_idS = el._id
-    // console.log(el, "slider");
-    // console.log(product_idS,Qty,UserId,"slider")
-    // const res = await axios.post("http://localhost:8080/api/cart",{
-    //   productId:product_idS,
-    //   qty:1,
-    //   user_id: UserId
-    // })
-
-    // console.log(res.data,"slider");
-  };
-
-
+  const handleAddToCartS = async (el) => {};
 
   //view cart button
   const handleViewCart = () => {
     navigate("/cart");
   };
-  // console.log((Number(desData.mrp)),Number(desData.strike))
-
-
 
   //offer cal
   var offer = (
     100 -
     (Number(desData.mrp) / Number(desData.strike)) * 100
   ).toFixed(2);
-  // console.log(offer,"offer")
-
-
-  ///to get number of items in cart
-  // useEffect(() => {
-  //   getCartdata();
-  // },[])
-
-   
-  //  var UserId = localStorage.getItem("user_id")
-  //  const getCartdata = async() => {
-  //   await axios
-  //   .get(`http://localhost:8080/api/cart/${UserId}`)
-  //   .then(({ data }) => {
-  //     setCartdata(data)
-  //     // console.log(data,"items in cart")
-  //   })
-
-  // }
- 
-  // var Cart = cartdata.cartProduct
-  
-  // if(Cart==undefined)
-  // {
-  //   console.log("zero")
-  // }
-  // else{
-  //   var Length = cartdata.cartProduct.length
-  //   console.log(Cart)
-  //   // console.log(Length,"length")
-
-  //   let Total = 0
-  //   let TotalStrike = 0
-
-  //   let sum = 0
-  //   for(let i=0; i<Cart.length; i++)
-  //   {
-  //     sum=sum+Cart[i].qty
-  //     Total=Total+Cart[i].product.mrp
-  //     TotalStrike=TotalStrike+Cart[i].product.strike
-  //   }
-  //   console.log(sum,"sumQty")
-  //   setQty(sum)
-  // }
-  // console.log(qty,"qty")
-
- 
 
   var settings = {
     dots: false,
@@ -236,329 +130,17 @@ const Desc = () => {
     prevArrow: <PrevArrow />,
   };
 
- 
- 
-if(state==false){
-  return (
-    <>
-      <div className={styles.div}>
-        <div>
-          <p style={{display:"flex"}}>
-            Home <IoIosArrowForward style={{ width:"4vh",marginTop:'0.2rem' }}/> {desData.title}
-          </p>
-        </div>
-        <div className={styles.outer_div_1}>
-          <div className={styles.main_div1}>
-            <div className={styles.desc_img_div1}>
-              <img src={desData.img1} alt="" />
-            </div>
-            <div className={styles.desc_img_div2}>
-              <img onClick={handleClick1} src={desData.img1} alt="" />
-              <img onClick={handleClick2} src={desData.img2} alt="" />
-              <img onClick={handleClick3} src={desData.img3} alt="" />
-            </div>
-          </div>
-          <div className={styles.main_div2}>
-            <Heading as="h1" fontSize="20px">
-              {desData.title}
-            </Heading>
-
-            <div style={{ display: "flex", gap: "20px" }}>
-              <Heading as="h1" fontSize="20px">
-                {"\u20B9"}
-                {desData.mrp}
-              </Heading>
-              <p>MRP</p>
-              <p
-                style={{
-                  textDecorationLine: "line-through",
-                  textDecorationStyle: "solid",
-                }}
-              >
-                {"\u20B9"}
-                {desData.strike}
-              </p>
-              <p
-                style={{
-                  backgroundImage:
-                    "url(" +
-                    "https://assets.pharmeasy.in/web-assets/_next/icons/pdp-discount.png" +
-                    ")",
-                  fontSize: "13px",
-                  margin: "auto",
-                  color: "white",
-                  marginTop: "-1px",
-                }}
-              >
-                {offer}%OFF
-              </p>
-            </div>
-
-            <p style={{ fontSize: "12px" }}>Inclusive of all taxes</p>
-            <p>Delivery by Tommorrow, before 10.00 pm</p>
-          </div>
-          <div className={styles.main_div3}>
-            <Select
-              onClick={handleAddToCart}
-              placeholder="Add to Cart"
-              color="white"
-              w="9rem"
-              backgroundColor="teal"
-              onChange={(e) => setVal(e.target.value)}
-            >
-              <option style={{ color: "black" }} value="1">
-                1
-              </option>
-              <option style={{ color: "black" }} value="2">
-                2
-              </option>
-              <option style={{ color: "black" }} value="3">
-                3
-              </option>
-              <option style={{ color: "black" }} value="4">
-                4
-              </option>
-              <option style={{ color: "black" }} value="5">
-                5
-              </option>
-              <option style={{ color: "black" }} value="6">
-                6
-              </option>
-              <option style={{ color: "black" }} value="7">
-                7
-              </option>
-              <option style={{ color: "black" }} value="8">
-                8
-              </option>
-              <option style={{ color: "black" }} value="9">
-                9
-              </option>
-              <option style={{ color: "black" }} value="10">
-                10
-              </option>
-            </Select>
-          </div>
-
-          <div className={styles.main_div4}>
-            <p style={{ fontWeight: "bold" }}>
-               Items in Cart
-            </p>
-
-            <Stack
-              spacing={4}
-              direction="row"
-              align="center"
-              marginTop="1rem"
-              marginBottom="4rem"
-            >
-              <Button
-                onClick={handleViewCart}
-                colorScheme="teal"
-                size="lg"
-                width="20rem"
-              >
-                View Cart <IoIosArrowForward style={{ marginLeft:"1.5rem",width:"4vh" }}/>
-              </Button>
-            </Stack>
-
-            <div className={styles.offerdiv}>
-              <p style={{ fontWeight: "bold" }}>Offers just for you</p>
-              <div style={{ display: "flex", marginTop: "1rem", gap: "10px" }}>
-                <img
-                  src="https://cms-contents.pharmeasy.in/offer/60165886431-ten_per.jpg"
-                  alt=""
-                />
-                <p>
-                  Get extra 10% Off on Everherb, Liveasy
-                  <br />
-                  PharmEasy products
-                </p>
-              </div>
-              <div style={{ display: "flex", marginTop: "1rem", gap: "10px" }}>
-                <img
-                  src="https://cms-contents.pharmeasy.in/offer/94fa2133c15-Plum_logo2.jpg"
-                  alt=""
-                />
-                <p>Get Flat 50% off on Plum</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.slider_1}>
-          <Heading as="h4" size="md">
-            Frequently Bought Together
-          </Heading>
-          <Slider {...settings}>
-            {slider.map((el) => {
-              return (
-                <>
-                  <div className={styles.slider_1_div}>
-                    <div className={styles.slider_1_div_flex}>
-                      <img className={styles.slider_img} src={el.img1} />
-                      <p style={{ height: "7rem", fontSize: "13px" }}>
-                        {el.title}
-                      </p>
-                      <p
-                        style={{
-                          fontSize: "13px",
-                          textDecorationLine: "line-through",
-                          textDecorationStyle: "solid",
-                        }}
-                      >
-                        MRP {"\u20B9"}
-                        {el.strike}
-                      </p>
-                      <p>
-                        {"\u20B9"} {el.mrp}{" "}
-                      </p>
-
-                      <Select
-                        onClick={handleAddToCartS(el)}
-                        color="teal"
-                        margin="auto"
-                        width="25vh"
-                        onChange={(e) => setVal(e.target.value)}
-                        placeholder="Add to Cart"
-                      >
-                        <option style={{ color: "black" }} value="1">
-                          1
-                        </option>
-                        <option style={{ color: "black" }} value="2">
-                          2
-                        </option>
-                        <option style={{ color: "black" }} value="3">
-                          3
-                        </option>
-                        <option style={{ color: "black" }} value="4">
-                          4
-                        </option>
-                        <option style={{ color: "black" }} value="5">
-                          5
-                        </option>
-                        <option style={{ color: "black" }} value="6">
-                          6
-                        </option>
-                        <option style={{ color: "black" }} value="7">
-                          7
-                        </option>
-                        <option style={{ color: "black" }} value="5">
-                          8
-                        </option>
-                        <option style={{ color: "black" }} value="6">
-                          9
-                        </option>
-                        <option style={{ color: "black" }} value="7">
-                          10
-                        </option>
-                      </Select>
-                    </div>
-                  </div>
-                </>
-              );
-            })}
-          </Slider>
-        </div>
-
-        <div className={styles.bottom_1}>
-          <div>
-            <img
-              className={styles.bottom_1_img1}
-              src="https://is5-ssl.mzstatic.com/image/thumb/Purple125/v4/25/e3/46/25e346ae-5ef1-7160-ce1b-b026792dae2d/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/230x0w.webp"
-              alt=""
-            />
-            <Heading as="h4" size="md">
-              1 Lakh+Products
-            </Heading>
-            <p>
-              We maintain strict quality <br />
-              controls on all our partner retailers,
-              <br />
-              so that you always get standard <br />
-              quality products.
-            </p>
-          </div>
-          <div>
-            <img
-              className={styles.bottom_1_img}
-              src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRZTLyoLYiQZNQ0yg_oYch7AEptx8Xi2YCG0F03_mVIWomqypwq"
-              alt=""
-            />
-            <Heading as="h4" size="md">
-              Secure Payment
-            </Heading>
-            <p>
-              100% secure and trusted <br />
-              payment protection
-            </p>
-          </div>
-          <div>
-            <img
-              className={styles.bottom_1_img}
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShVaypOjjhUQzWBVQiYwSwhMn1QrUmGJ58I0bLJ6xTgLQMvflW"
-              alt=""
-            />
-            <Heading as="h4" size="md">
-              Easy Return
-            </Heading>
-            <p>
-              We have a new and dynamic return window <br />
-              policy for medicines and healthcare items. <br />
-              Refer FAQs section for more details.
-            </p>
-          </div>
-        </div>
-        <div className={styles.bottom_2}>
-          <div className={styles.bottom_21}>
-            <img
-              src="https://assets.pharmeasy.in/web-assets/_next/icons/footerMobile.jpg"
-              alt=""
-            />
-          </div>
-          <div className={styles.bottom_22}>
-            <p>Download the App for Free</p>
-            <div>
-              <div>
-                <a
-                  href="https://play.google.com/store/apps/details?id=com.phonegap.rxpal&hl=en_IN&gl=US&utm_source=web&utm_medium=footer"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img
-                    src="https://www.idfcfirstbank.com/content/dam/IDFCFirstBank/apple-store-icon.svg"
-                    alt=""
-                  />
-                </a>
-              </div>
-              <div>
-                <a
-                  href="https://apps.apple.com/in/app/pharmeasy-healthcare-app/id982432643"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img
-                    src="https://www.idfcfirstbank.com/content/dam/IDFCFirstBank/android-store-icon.svg"
-                    alt=""
-                  />
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
-
-  );
-  }
-
-  if(state==true)
-  {
+  if (state === false) {
     return (
       <>
         <div className={styles.div}>
           <div>
-            <p style={{display:"flex"}}>
-              Home <IoIosArrowForward style={{ width:"4vh",marginTop:'0.2rem' }}/> {desData.title}
+            <p style={{ display: "flex" }}>
+              Home{" "}
+              <IoIosArrowForward
+                style={{ width: "4vh", marginTop: "0.2rem" }}
+              />{" "}
+              {desData.title}
             </p>
           </div>
           <div className={styles.outer_div_1}>
@@ -569,14 +151,14 @@ if(state==false){
               <div className={styles.desc_img_div2}>
                 <img onClick={handleClick1} src={desData.img1} alt="" />
                 <img onClick={handleClick2} src={desData.img2} alt="" />
-                <img onClick={handleClick3}src={desData.img3} alt="" />
+                <img onClick={handleClick3} src={desData.img3} alt="" />
               </div>
             </div>
             <div className={styles.main_div2}>
               <Heading as="h1" fontSize="20px">
                 {desData.title}
               </Heading>
-  
+
               <div style={{ display: "flex", gap: "20px" }}>
                 <Heading as="h1" fontSize="20px">
                   {"\u20B9"}
@@ -607,7 +189,7 @@ if(state==false){
                   {offer}%OFF
                 </p>
               </div>
-  
+
               <p style={{ fontSize: "12px" }}>Inclusive of all taxes</p>
               <p>Delivery by Tommorrow, before 10.00 pm</p>
             </div>
@@ -652,12 +234,10 @@ if(state==false){
                 </option>
               </Select>
             </div>
-  
+
             <div className={styles.main_div4}>
-              <p style={{ fontWeight: "bold" }}>
-                 Items in Cart
-              </p>
-  
+              <p style={{ fontWeight: "bold" }}>Items in Cart</p>
+
               <Stack
                 spacing={4}
                 direction="row"
@@ -666,18 +246,23 @@ if(state==false){
                 marginBottom="4rem"
               >
                 <Button
-                  onClick={handleClick3}
+                  onClick={handleViewCart}
                   colorScheme="teal"
                   size="lg"
                   width="20rem"
                 >
-                  View Cart <IoIosArrowForward style={{ marginLeft:"1.5rem",width:"4vh" }}/>
+                  View Cart{" "}
+                  <IoIosArrowForward
+                    style={{ marginLeft: "1.5rem", width: "4vh" }}
+                  />
                 </Button>
               </Stack>
-  
+
               <div className={styles.offerdiv}>
                 <p style={{ fontWeight: "bold" }}>Offers just for you</p>
-                <div style={{ display: "flex", marginTop: "1rem", gap: "10px" }}>
+                <div
+                  style={{ display: "flex", marginTop: "1rem", gap: "10px" }}
+                >
                   <img
                     src="https://cms-contents.pharmeasy.in/offer/60165886431-ten_per.jpg"
                     alt=""
@@ -688,7 +273,9 @@ if(state==false){
                     PharmEasy products
                   </p>
                 </div>
-                <div style={{ display: "flex", marginTop: "1rem", gap: "10px" }}>
+                <div
+                  style={{ display: "flex", marginTop: "1rem", gap: "10px" }}
+                >
                   <img
                     src="https://cms-contents.pharmeasy.in/offer/94fa2133c15-Plum_logo2.jpg"
                     alt=""
@@ -698,7 +285,7 @@ if(state==false){
               </div>
             </div>
           </div>
-  
+
           <div className={styles.slider_1}>
             <Heading as="h4" size="md">
               Frequently Bought Together
@@ -726,7 +313,7 @@ if(state==false){
                         <p>
                           {"\u20B9"} {el.mrp}{" "}
                         </p>
-  
+
                         <Select
                           onClick={handleAddToCartS(el)}
                           color="teal"
@@ -773,7 +360,7 @@ if(state==false){
               })}
             </Slider>
           </div>
-  
+
           <div className={styles.bottom_1}>
             <div>
               <img
@@ -861,7 +448,6 @@ if(state==false){
           </div>
         </div>
       </>
-  
     );
   }
 };

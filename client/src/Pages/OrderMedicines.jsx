@@ -113,12 +113,10 @@ const OrderMedicines = () => {
   const [val, setVal] = useState("");
   const navigate = useNavigate();
 
-  console.log(val.value, "val");
   var details = val.value;
   var details2 = val.v2;
 
   if (val.value) {
-    // localStorage.setItem("productDetails", JSON.stringify(details));
     localStorage.setItem("frequently", JSON.stringify(details2));
     navigate(`/productdetails/${details}`);
   }
@@ -186,7 +184,6 @@ const OrderMedicines = () => {
                 alt=""
               />
               <p>Order via Prescription</p>
-              <img />
             </div>
             <div>
               <img
@@ -195,7 +192,6 @@ const OrderMedicines = () => {
                 alt=""
               />
               <p>Don't have a Prescription?</p>
-              <img />
             </div>
           </div>
         </div>

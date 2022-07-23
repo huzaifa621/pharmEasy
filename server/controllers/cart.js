@@ -107,4 +107,19 @@ const moveToOrder = async (req, res) => {
   }
 };
 
-module.exports = { addCart, getCart, moveToOrder };
+const deleteProduct = async (req, res) => {
+  const { user_id, product_id } = req.params;
+
+  try {
+    const findPro = await cartObjectModel.deleteOne({
+      user_id: user_id,
+      _id: product_id,
+    });
+
+    return res.send({});
+  } catch (err) {
+    return res.sendStatus(404);
+  }
+};
+
+module.exports = { addCart, getCart, moveToOrder, deleteProduct };

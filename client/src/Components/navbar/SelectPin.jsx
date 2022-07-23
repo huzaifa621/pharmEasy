@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from "@chakra-ui/layout";
+import { Flex, Text } from "@chakra-ui/layout";
 import React from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 

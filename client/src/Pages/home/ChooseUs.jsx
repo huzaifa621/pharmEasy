@@ -1,3 +1,4 @@
+import { Heading } from "@chakra-ui/layout";
 import styles from "../../Styles/home/chooseUs.module.css";
 
 const db = [
@@ -26,14 +27,32 @@ const db = [
 const ChooseUs = () => {
   return (
     <div className={styles.container}>
-      <h3>Why Choose Us?</h3>
+      <Heading size="md" m="1rem" style={{ color: "#55585e" }}>
+        Why Choose Us?
+      </Heading>
       <div className={styles.flexBox}>
         {db.map((el) => {
           return (
             <div>
-              <img src={el.img} alt="" />
-              <h2>{el.title}</h2>
-              <h3>{el.para}</h3>
+              <img style={{ marginBottom: "30px" }} src={el.img} alt="" />
+              <Heading
+                size="md"
+                style={{
+                  color: "#55585e",
+                  marginBottom: "16px"
+                }}
+              >
+                {el.title}
+              </Heading>
+              <div
+                style={{
+                  fontSize: "18px",
+                  fontWeight: "bold",
+                  color: "#55585e"
+                }}
+              >
+                {el.para}
+              </div>
             </div>
           );
         })}
