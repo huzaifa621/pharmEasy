@@ -469,7 +469,7 @@ const Healthcare = ({ slides }) => {
             borderRadius="11"
             boxShadow="md"
             _hover={{ borderColor: "skyblue", borderWidth: "5px" }}
-            onClick={() => navigate("/products/Value Store")}
+            onClick={() => navigate("/products/Personal Care")}
           >
             <Image
               src="https://cdn01.pharmeasy.in/dam/discovery/categoryImages/7967589fcc513f348de4c1069c04ea38.png"
