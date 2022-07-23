@@ -111,7 +111,7 @@ const FeaturedBrand = () => {
   var settings = {
     dots: false,
     speed: 500,
-    infinite: false,
+    infinite: true,
     slidesToShow: 8,
     slidesToScroll: 1,
     swipeToSlide: true,
