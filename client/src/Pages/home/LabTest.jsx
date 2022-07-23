@@ -77,7 +77,7 @@ const LabTest = () => {
   var settings = {
     dots: false,
     speed: 500,
-    infinite: true,
+    infinite: false,
     slidesToShow: 4.5,
     slidesToScroll: 1,
     swipeToSlide: true,
@@ -98,6 +98,7 @@ const LabTest = () => {
       </div>
       <div className={styles.second}>
         <Slider {...settings}>
+          <LabTestInfo />
           {db.map((el) => {
             return <LabTestCards props={el} />;
           })}
