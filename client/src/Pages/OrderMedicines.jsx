@@ -121,6 +121,7 @@ const OrderMedicines = () => {
     // localStorage.setItem("productDetails", JSON.stringify(details));
     localStorage.setItem("frequently", JSON.stringify(details2));
     navigate(`/productdetails/${details}`);
+    
   }
 
   var settings = {
