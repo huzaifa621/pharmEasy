@@ -18,6 +18,8 @@ import Medicalrecord from "../User/Medicalrecord";
 import Wallet from "../User/Wallet";
 import Myprofile from "../User/Myprofile";
 import Refer from "../User/Refer";
+import Payment from "../Components/payment/Payment";
+import ThankYou from "../Components/payment/ThankYou";
 
 const Mainroutes = () => {
   return (
@@ -42,7 +44,8 @@ const Mainroutes = () => {
         <Route path="/myprofile" element={<Myprofile />} />
         <Route path="/wallet" element={<Wallet />} />
         <Route path="/refer" element={<Refer />} />
-        
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/thnx-you-paid" element={<ThankYou />} />
       </Routes>
       <Footer />
     </div>

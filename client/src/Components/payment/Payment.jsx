@@ -1,23 +1,22 @@
-import "./App.css";
-import { useState } from "react";
+// import "./App.css";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { AuthContext } from "../../Context/AuthContext";
 
 function Payment() {
-  const [book, setBook] = useState({
-    name: "The Fault In Our Stars",
-    author: "John Green",
-    img: "https://images-na.ssl-images-amazon.com/images/I/817tHNcyAgL.jpg",
-    price: 250,
-  });
+  const value = useContext(AuthContext);
+  useEffect(() => {
+    handlePayment();
+  }, []);
 
   const initPayment = (data) => {
     const options = {
       key: "rzp_test_hWn45h7vbMk9ZG",
       amount: data.amount,
       currency: data.currency,
-      name: book.name,
-      description: "Test Transaction",
-      image: book.img,
+      name: value.formData.fname,
+      description: "PharmEasy.in",
+      image: "https://pharmeasy.in/pe_logo_2x.png",
       order_id: data.id,
       handler: async (response) => {
         try {
@@ -34,7 +33,7 @@ function Payment() {
         ) {
           redirect_url = "/you-owe-money.html";
         } else {
-          redirect_url = "/thnx-you-paid.html";
+          redirect_url = "/thnx-you-paid";
         }
         window.location.href = redirect_url;
       },
@@ -49,7 +48,7 @@ function Payment() {
   const handlePayment = async () => {
     try {
       const orderUrl = "http://localhost:8080/api/payment/orders";
-      const { data } = await axios.post(orderUrl, { amount: book.price });
+      const { data } = await axios.post(orderUrl, { amount: value.total });
       console.log(data);
       initPayment(data.data);
     } catch (error) {
@@ -58,7 +57,7 @@ function Payment() {
   };
   return (
     <div className="App">
-      <div className="book_container">
+      {/* <div className="book_container">
         <img src={book.img} alt="book_img" className="book_img" />
         <p className="book_name">{book.name}</p>
         <p className="book_author">By {book.author}</p>
@@ -68,7 +67,7 @@ function Payment() {
         <button onClick={handlePayment} className="buy_btn">
           buy now
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }
