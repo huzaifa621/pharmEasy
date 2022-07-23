@@ -103,7 +103,7 @@ const Desc = () => {
     console.log(product_id, Qty, UserId, "cart");
     const res = await axios.post("http://localhost:8080/api/cart", {
       productId: product_id,
-      qty: val,
+      qty: Number(val),
       user_id: UserId,
     });
     console.log(res.data);
