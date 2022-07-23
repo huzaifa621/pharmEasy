@@ -13,12 +13,13 @@ import {
   Checkbox,
   Divider,
 } from "@chakra-ui/react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Product = () => {
   const [data, setData] = useState([]);
   const [type, setType] = useState([]);
   const { str } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getData = async () => {
@@ -461,6 +462,10 @@ const Product = () => {
                 p="2"
                 rounded="md"
                 bg="white"
+                onClick={() => {
+                  navigate(`/productdetails/${elem.title}`);
+                  localStorage.setItem("frequently", JSON.stringify(str));
+                }}
                 borderColor={"gray"}
                 _hover={{ borderColor: "gray", borderWidth: "2px" }}
               >
@@ -559,7 +564,6 @@ const Product = () => {
       <Box w={"80%"} m="auto">
         <Grid templateColumns="repeat(3, 1fr)" gap={8}>
           <Box w="90%" h="33rem" ml="1rem" bg="white">
-            {" "}
             <Image
               w="100%"
               h="100%"

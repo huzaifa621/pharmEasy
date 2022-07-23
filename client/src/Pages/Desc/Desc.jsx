@@ -9,7 +9,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { Select } from "@chakra-ui/react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
@@ -61,6 +61,7 @@ const Desc = () => {
   const navigate = useNavigate();
   const detail = JSON.parse(localStorage.getItem("productDetails"));
   const detail2 = JSON.parse(localStorage.getItem("frequently"));
+  const { title } = useParams();
 
   // console.log(desData,"detail")
 
@@ -80,7 +81,7 @@ const Desc = () => {
 
   const getData = () => {
     axios
-      .get(`http://localhost:8080/api/product/single/${detail}`)
+      .get(`http://localhost:8080/api/product/single/${title}`)
       .then(({ data }) => {
         // console.log(data,"data1")
         setDesdata(data);
@@ -93,7 +94,7 @@ const Desc = () => {
   };
   var product_id = desData._id;
   var Qty = val;
-  var UserId = localStorage.getItem("user_id")
+  var UserId = localStorage.getItem("user_id");
 
   // console.log(Qty,"qty")
 
@@ -111,9 +112,7 @@ const Desc = () => {
 
   const handleAddToCartS = (el) => {
     // var product_idS = el._id
-
     // console.log(el, "slider");
-
     // console.log(product_idS,Qty,UserId,"slider")
     // axios.post("/",{
     //   productId:product_idS,
@@ -122,7 +121,6 @@ const Desc = () => {
     // })
   };
   const handleClick3 = () => {
-   
     navigate("/cart");
   };
   // console.log((Number(desData.mrp)),Number(desData.strike))
@@ -136,7 +134,7 @@ const Desc = () => {
   ).toFixed(2);
   // console.log(offer,"offer")
 
-  let cartQty = localStorage.getItem("qty")
+  let cartQty = localStorage.getItem("qty");
 
   var settings = {
     dots: false,
@@ -249,7 +247,9 @@ const Desc = () => {
           </div>
 
           <div className={styles.main_div4}>
-            <p style={{ fontWeight: "bold" }}>{cartQty+Number(Qty)} Items in Cart</p>
+            <p style={{ fontWeight: "bold" }}>
+              {cartQty + Number(Qty)} Items in Cart
+            </p>
 
             <Stack
               spacing={4}
@@ -458,5 +458,3 @@ const Desc = () => {
 };
 
 export default Desc;
-
-

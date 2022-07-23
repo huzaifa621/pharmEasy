@@ -229,7 +229,7 @@ const Navbar = () => {
                 style={{ marginTop: "0.2rem", marginRight: "0.4rem" }}
                 size="23px"
               />
-              <a href="">Offers</a>
+              <p style={{ color: "white" }}>Offers</p>
             </Flex>
             <Flex>
               <RiUser5Fill
@@ -247,25 +247,53 @@ const Navbar = () => {
                 {value.authState ? (
                   <>
                     <MenuList>
-                      <MenuItem color="black" _hover={{ color: "teal.500" }}>
+                      <MenuItem
+                        onClick={() => navigate("/myorders")}
+                        color="black"
+                        _hover={{ color: "teal.500" }}
+                      >
                         My Orders
                       </MenuItem>
-                      <MenuItem color="black" _hover={{ color: "teal.500" }}>
+                      <MenuItem
+                        onClick={() => navigate("/myrefills")}
+                        color="black"
+                        _hover={{ color: "teal.500" }}
+                      >
                         My Refills
                       </MenuItem>
-                      <MenuItem color="black" _hover={{ color: "teal.500" }}>
+                      <MenuItem
+                        onClick={() => navigate("/medicalrecord")}
+                        color="black"
+                        _hover={{ color: "teal.500" }}
+                      >
                         Medical Records
                       </MenuItem>
-                      <MenuItem color="black" _hover={{ color: "teal.500" }}>
+                      <MenuItem
+                        onClick={() => navigate("/myprofile")}
+                        color="black"
+                        _hover={{ color: "teal.500" }}
+                      >
                         My Profile
                       </MenuItem>
-                      <MenuItem color="black" _hover={{ color: "teal.500" }}>
+                      <MenuItem
+                        onClick={() => navigate("/wallet")}
+                        color="black"
+                        _hover={{ color: "teal.500" }}
+                      >
                         Wallet
                       </MenuItem>
-                      <MenuItem color="black" _hover={{ color: "teal.500" }}>
+                      <MenuItem
+                        onClick={() => navigate("/refer")}
+                        color="black"
+                        _hover={{ color: "teal.500" }}
+                      >
                         Refer & Earn
                       </MenuItem>
-                      <MenuItem color="black" _hover={{ color: "teal.500" }}>
+                      <MenuItem
+                        onClick={() => navigate("/")}
+                        color="black"
+                        _hover={{ color: "teal.500" }}
+                      >
                         Notification
                       </MenuItem>
                       <MenuItem
@@ -401,7 +429,7 @@ const Navbar = () => {
                 style={{ marginTop: "0.2rem", marginRight: "0.4rem" }}
                 size="23px"
               />
-              <a href="">Cart</a>
+              <Link to="/cart">Cart</Link>
             </Flex>
           </Flex>
         </div>
