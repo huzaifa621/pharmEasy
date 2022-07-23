@@ -1,24 +1,21 @@
 import { useNavigate } from "react-router-dom";
 import styles from "../../Styles/home/labTest.module.css";
 
-const LabTestCards = () => {
+const LabTestCards = ({ props }) => {
+  const { img, title, price } = props;
   const navigate = useNavigate();
   return (
     <div className={styles.box} onClick={() => navigate("/rtpcr")}>
       <div>
-        <img
-          width="60px"
-          src="https://assets.pharmeasy.in/web-assets/dist/51ffd21a.svg"
-          alt=""
-        />
+        <img width="60px" style={{ marginBottom: "16px" }} src={img} alt="" />
       </div>
-      <div>
-        <p>Comprehensive Full Body check...</p>
+      <div style={{ marginBottom: "16px" }}>
+        <p>{title}</p>
         <p>Available at 1 cerified Lab</p>
       </div>
       <div className={styles.bottomDiv}>
-        <div>
-          <b>₹1,499</b> Onwards
+        <div style={{ color: "#55585e" }}>
+          <b>{price}</b> Onwards
         </div>
         <div style={{ color: "teal" }}>
           <b>Book Now {">"}</b>

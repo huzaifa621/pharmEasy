@@ -14,7 +14,7 @@ function NextArrow(props) {
         marginRight: "1rem",
         background: "none",
         width: "2rem",
-        zIndex: 50,
+        zIndex: 50
       }}
       onClick={onClick}
     />
@@ -34,7 +34,7 @@ function PrevArrow(props) {
         color: "white",
         height: "2rem",
         width: "2rem",
-        zIndex: 50,
+        zIndex: 50
       }}
       onClick={onClick}
     />
@@ -50,13 +50,15 @@ const TopSlider = () => {
     autoplaySpeed: 2000,
     cssEase: "linear",
     nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
+    prevArrow: <PrevArrow />
   };
   return (
     <div
       style={{
         backgroundColor: "whitesmoke",
         paddingBottom: "30px",
+        width: "98%",
+        margin: "auto"
       }}
     >
       <Slider {...settings}>
