@@ -52,4 +52,15 @@ const singleProduct = async (req, res) => {
   return res.sendStatus(404);
 };
 
-module.exports = { productGet, productPost, productGetSearch, singleProduct };
+const productsGet = async (req, res) => {
+  const data = await productModel.find();
+  return res.send(data);
+};
+
+module.exports = {
+  productGet,
+  productPost,
+  productGetSearch,
+  singleProduct,
+  productsGet,
+};
