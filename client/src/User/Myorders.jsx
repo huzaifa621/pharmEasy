@@ -13,6 +13,7 @@ import styles from "./Myorders.module.css";
 
 const Myorders = () => {
   const [orderlist, setOrderlist] = useState([]);
+  const [total, setTotal] = useState(0);
   useEffect(() => {
     const order = async () => {
       const user_id = localStorage.getItem("user_id");
@@ -21,6 +22,13 @@ const Myorders = () => {
       );
       // console.log(res.data);
       setOrderlist(res.data);
+      let total = 0;
+
+      for (let el of res.data.orderedProduct) {
+        total += el.product.mrp * el.qty;
+      }
+
+      setTotal(total);
     };
     order();
   }, []);
@@ -59,12 +67,6 @@ const Myorders = () => {
   const data = timeSince(new Date(orderlist.createdAt));
   // console.log(list,"list")
   // console.log(orderId)
-  let total = 0;
-  if (orderlist) {
-    for (let el of list) {
-      total += el.product.mrp * el.qty;
-    }
-  }
 
   // var total = localStorage.getItem("total");
 
