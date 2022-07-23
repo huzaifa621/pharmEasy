@@ -3,7 +3,7 @@ import styles from "../../Styles/home/pharmEasyPlus.module.css";
 const PharmEasyPlus = () => {
   return (
     <div className={styles.container}>
-      <div style={{ flex: "1" }}>
+      <div style={{ flex: "1", marginTop: "26px" }}>
         <img
           width="190px"
           src="https://assets.pharmeasy.in/web-assets/dist/e3db129c.png"
@@ -16,10 +16,10 @@ const PharmEasyPlus = () => {
       </div>
       <div style={{ flex: "1" }}>
         <img
-          height="120px"
+          width="170px"
           style={{
-            marginBottom: "16px",
-            marginLeft: "50px"
+            marginTop: "-42px",
+            marginLeft: "30%"
           }}
           src="https://assets.pharmeasy.in/web-assets/dist/b20b0932.png"
           alt=""
