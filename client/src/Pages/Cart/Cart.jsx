@@ -148,7 +148,8 @@ const Cart = () => {
         </div>
       </>
     );
-  } else {
+  } 
+  else {
     var Length = cartdata.cartProduct.length;
     console.log(Cart);
 
@@ -160,6 +161,19 @@ const Cart = () => {
       sum = sum + Cart[i].qty;
       Total = Total + Cart[i].product.mrp * Cart[i].qty;
       TotalStrike = TotalStrike + Cart[i].product.strike * Cart[i].qty;
+    }
+    if(sum==0)
+    {
+      return (
+        <>
+          <div style={{ margin: "auto", width: "90vh" }}>
+            <img
+              src="https://www.eyecatchers.in/shop-online/images/cart-empty.jpg"
+              alt=""
+            />
+          </div>
+        </>
+      );
     }
 
     let total = Total.toFixed(2);
