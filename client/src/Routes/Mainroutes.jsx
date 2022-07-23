@@ -42,6 +42,7 @@ const Mainroutes = () => {
         <Route path="/myprofile" element={<Myprofile />} />
         <Route path="/wallet" element={<Wallet />} />
         <Route path="/refer" element={<Refer />} />
+        
       </Routes>
       <Footer />
     </div>

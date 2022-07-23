@@ -3,14 +3,14 @@ import { useEffect } from "react";
 import styles from "../../Styles/Cart.module.css";
 // import styles from "../../Styles/Desc.module.css"
 import axios from "axios";
-import { Heading } from "@chakra-ui/react";
-import { Button, ButtonGroup } from "@chakra-ui/react";
-import { Stack, HStack, VStack } from "@chakra-ui/react";
+import { FormControl, FormLabel, Heading, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from "@chakra-ui/react";
+import { Button} from "@chakra-ui/react";
+
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
-import { Navigate, useNavigate } from "react-router-dom";
+
+import {  useNavigate } from "react-router-dom";
 import { Select } from "@chakra-ui/react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
@@ -78,6 +78,10 @@ const Cart = () => {
   const [val, setVal] = useState("");
   const[cartdata,setCartdata] = useState([])
   const navigate = useNavigate()
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
+    const initialRef = React.useRef(null)
+    const finalRef = React.useRef(null)
   var settings = {
     dots: false,
     infinite: true,
@@ -167,11 +171,51 @@ const Cart = () => {
     localStorage.setItem("qty",sum)
 
 
-    const handleClick = () => {
-  
-    }
+   
     
   return (
+    <><Button onClick={onOpen}>Open Modal</Button>
+    <Modal
+    initialFocusRef={initialRef}
+    finalFocusRef={finalRef}
+    isOpen={isOpen}
+    onClose={onClose}
+  >
+    <ModalOverlay />
+    <ModalContent>
+      <ModalHeader>Add Your Address</ModalHeader>
+      <ModalCloseButton />
+      <ModalBody pb={4}>
+        <FormControl>
+          <FormLabel>First name</FormLabel>
+          <Input ref={initialRef} placeholder='Enter First name' />
+        </FormControl>
+
+        <FormControl mt={4}>
+          <FormLabel>Last name</FormLabel>
+          <Input placeholder='Enter Last name' />
+        </FormControl>
+      </ModalBody>
+
+      <ModalBody pb={4}>
+        <FormControl>
+          <FormLabel>Mobile Number</FormLabel>
+          <Input ref={initialRef} placeholder='Enter Mobile Number' />
+        </FormControl>
+
+        <FormControl mt={4}>
+          <FormLabel>Delivery Address</FormLabel>
+          <Input placeholder='Enter Your Delivey Address' />
+        </FormControl>
+      </ModalBody>
+
+      <ModalFooter>
+        <Button colorScheme='blue' mr={3}>
+          Proceed To Buy
+        </Button>
+    </ModalFooter>
+    </ModalContent>
+  </Modal>
     <div className={styles.div}>
       <div className={styles.main}>
         <div className={styles.left}>
@@ -344,7 +388,7 @@ const Cart = () => {
             </div>
             <div>
             <Button
-                onClick={handleClick}
+                onClick={onOpen}
                 colorScheme="teal"
                 size="lg"
                 width="20rem"
@@ -459,6 +503,7 @@ const Cart = () => {
         </div>
       </div>
     </div>
+    </>
   );
               }
 };
