@@ -75,6 +75,9 @@ Implemented searching ,review product and buying functionalities with online pay
 
 ![Screenshot (23)](https://user-images.githubusercontent.com/100186167/180634580-68835d46-5e6c-40fc-840e-39dc90f22553.png)
 
+![Screenshot (24)](https://user-images.githubusercontent.com/100186167/180634995-8b1624c2-eff4-4ece-8062-3996754c7ba3.png)
+
+
 
 ###### Lab tests & RTPCR Pages
 
